@@ -1,0 +1,1076 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Para a Júlia 💗</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            overflow: hidden;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            color: #5e2943;
+
+            background:
+                radial-gradient(circle at 20% 10%, #ffd6e8, transparent 30%),
+                radial-gradient(circle at 90% 90%, #ffc1dc, transparent 35%),
+                linear-gradient(135deg, #fff1f7, #ffd9e8, #ffeaf3);
+        }
+
+        /* FUNDO DECORATIVO */
+
+        .background-hearts {
+            position: fixed;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .floating-heart {
+            position: absolute;
+            bottom: -60px;
+            color: #ff7eaa;
+            opacity: 0.35;
+
+            animation: floatUp linear forwards;
+        }
+
+        @keyframes floatUp {
+            from {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+
+            15% {
+                opacity: 0.5;
+            }
+
+            to {
+                transform: translateY(-110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .sparkle {
+            position: fixed;
+            color: white;
+            font-size: 12px;
+            opacity: 0.7;
+            pointer-events: none;
+            animation: sparkle 2s infinite alternate;
+        }
+
+        @keyframes sparkle {
+            from {
+                opacity: 0.2;
+                transform: scale(0.7);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1.3);
+            }
+        }
+
+        /* CARTÃO */
+
+        .card {
+            width: min(92%, 620px);
+            max-height: 90vh;
+            overflow-y: auto;
+
+            position: relative;
+            z-index: 2;
+
+            padding: 42px 30px;
+
+            text-align: center;
+
+            background: rgba(255, 255, 255, 0.78);
+
+            border: 2px solid rgba(255, 150, 190, 0.35);
+
+            border-radius: 35px;
+
+            box-shadow:
+                0 25px 70px rgba(190, 70, 120, 0.18),
+                inset 0 0 40px rgba(255, 255, 255, 0.8);
+
+            backdrop-filter: blur(15px);
+        }
+
+        .card::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        .card::-webkit-scrollbar-thumb {
+            background: #ff9cbd;
+            border-radius: 20px;
+        }
+
+        /* TELAS */
+
+        .screen {
+            display: none;
+            animation: showScreen 0.7s ease;
+        }
+
+        .screen.active {
+            display: block;
+        }
+
+        @keyframes showScreen {
+            from {
+                opacity: 0;
+                transform: translateY(20px) scale(0.98);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* TEXTOS */
+
+        .emoji {
+            font-size: 65px;
+            margin-bottom: 15px;
+
+            animation: cuteFloat 2.5s ease-in-out infinite;
+        }
+
+        @keyframes cuteFloat {
+            50% {
+                transform: translateY(-8px) rotate(3deg);
+            }
+        }
+
+        h1 {
+            font-size: clamp(35px, 8vw, 52px);
+            margin-bottom: 15px;
+
+            color: #ed5d91;
+        }
+
+        h2 {
+            color: #e65b8c;
+            font-size: 30px;
+            margin-bottom: 15px;
+        }
+
+        h3 {
+            color: #9d4668;
+            margin: 20px 0;
+        }
+
+        p {
+            color: #704055;
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        .pink {
+            color: #ed5d91;
+            font-weight: bold;
+        }
+
+        /* BOTÕES */
+
+        button {
+            border: none;
+            cursor: pointer;
+
+            margin: 8px;
+            padding: 15px 27px;
+
+            border-radius: 999px;
+
+            color: white;
+
+            font-size: 16px;
+            font-weight: bold;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ff83ad,
+                    #ed5d91
+                );
+
+            box-shadow:
+                0 8px 20px rgba(237, 93, 145, 0.25);
+
+            transition: 0.25s;
+        }
+
+        button:hover {
+            transform: translateY(-3px) scale(1.04);
+
+            box-shadow:
+                0 12px 28px rgba(237, 93, 145, 0.35);
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        .light-button {
+            background: #ffe1ec;
+            color: #dc5687;
+            box-shadow: none;
+        }
+
+        /* SURPRESA */
+
+        .surprise-box {
+            min-height: 145px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 25px;
+            margin: 25px 0;
+
+            border-radius: 25px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #fff5f9,
+                    #ffe4ef
+                );
+
+            border: 2px dashed #ffadc8;
+
+            color: #d95687;
+
+            font-size: 19px;
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+        /* ESCOLHAS */
+
+        .choice {
+            width: 90%;
+            display: block;
+            margin: 12px auto;
+        }
+
+        /* BARRA */
+
+        .progress {
+            width: 100%;
+            height: 12px;
+
+            margin: 25px 0;
+
+            overflow: hidden;
+
+            background: #ffe1ec;
+
+            border-radius: 20px;
+        }
+
+        .progress-bar {
+            width: 0%;
+            height: 100%;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #ff9cbd,
+                    #ed5d91
+                );
+
+            border-radius: 20px;
+
+            transition: width 0.7s;
+        }
+
+        /* CARTA */
+
+        .letter {
+            margin-top: 25px;
+            padding: 28px;
+
+            text-align: left;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #fffafd,
+                    #fff0f6
+                );
+
+            border: 1px solid #ffd0df;
+
+            border-radius: 25px;
+
+            box-shadow:
+                0 10px 30px rgba(220, 90, 135, 0.08);
+        }
+
+        .letter p {
+            margin-bottom: 18px;
+        }
+
+        .letter strong {
+            color: #e65387;
+        }
+
+        .signature {
+            margin-top: 25px;
+
+            text-align: right;
+
+            color: #e65387;
+
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        /* CORAÇÃO FINAL */
+
+        .big-heart {
+            font-size: 90px;
+
+            animation: heartbeat 1.3s infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.15);
+            }
+        }
+
+        .small {
+            margin-top: 20px;
+            color: #b58398;
+            font-size: 13px;
+        }
+
+        /* CELULAR */
+
+        @media (max-width: 500px) {
+
+            .card {
+                padding: 32px 18px;
+            }
+
+            .letter {
+                padding: 20px;
+            }
+
+            button {
+                font-size: 15px;
+                padding: 14px 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- FUNDO -->
+    <div class="background-hearts" id="backgroundHearts"></div>
+
+    <!-- CARTÃO PRINCIPAL -->
+    <main class="card">
+
+        <!-- TELA 1 -->
+
+        <section class="screen active" id="tela1">
+
+            <div class="emoji">💗</div>
+
+            <h1>Oi, Júlia!</h1>
+
+            <p>
+                Eu tenho uma coisinha para te mostrar...
+            </p>
+
+            <br>
+
+            <p>
+                Não é um presente caro.
+                <br>
+                Não é algo gigante.
+                <br><br>
+
+                É só uma pequena coisa que eu fiz
+                pensando em uma pessoa muito especial.
+            </p>
+
+            <br>
+
+            <p class="pink">
+                E essa pessoa é você. 🥹
+            </p>
+
+            <br>
+
+            <button onclick="goTo(2)">
+                Quero ver 💕
+            </button>
+
+        </section>
+
+
+        <!-- TELA 2 -->
+
+        <section class="screen" id="tela2">
+
+            <div class="emoji">🌷</div>
+
+            <h2>Antes de continuar...</h2>
+
+            <p>
+                Quero que você saiba uma coisa:
+            </p>
+
+            <br>
+
+            <p>
+                Eu fiz cada parte disso com carinho,
+                pensando em como fazer você sorrir.
+            </p>
+
+            <br>
+
+            <p>
+                Então aproveita cada pedacinho,
+                porque esse pequeno presente é
+                <span class="pink">só seu.</span> 💗
+            </p>
+
+            <br>
+
+            <button onclick="goTo(3)">
+                Continuar 🥰
+            </button>
+
+        </section>
+
+
+        <!-- TELA 3 -->
+
+        <section class="screen" id="tela3">
+
+            <div class="emoji">🎀</div>
+
+            <h2>Caixinha de carinho</h2>
+
+            <p>
+                Aqui dentro existem algumas coisas
+                que eu gostaria de te dizer.
+            </p>
+
+            <p>
+                Clique quantas vezes quiser. 💕
+            </p>
+
+            <div class="surprise-box" id="surprise">
+                Aperte o botão para abrir uma mensagem 💌
+            </div>
+
+            <button onclick="randomMessage()">
+                Abrir mensagem 💗
+            </button>
+
+            <br>
+
+            <button
+                class="light-button"
+                onclick="goTo(4)">
+                Próxima surpresa 🌷
+            </button>
+
+        </section>
+
+
+        <!-- TELA 4 -->
+
+        <section class="screen" id="tela4">
+
+            <div class="emoji">🥺</div>
+
+            <h2>Uma perguntinha...</h2>
+
+            <p>
+                Júlia, pense com bastante cuidado.
+                Essa pergunta é extremamente importante.
+            </p>
+
+            <br>
+
+            <h3>
+                Quem é a pessoa que deixa
+                meus dias mais felizes?
+            </h3>
+
+            <button
+                class="choice"
+                onclick="answer(1)">
+                A Júlia 💗
+            </button>
+
+            <button
+                class="choice"
+                onclick="answer(2)">
+                Com certeza a Júlia 🥰
+            </button>
+
+            <button
+                class="choice"
+                onclick="answer(3)">
+                Acho que é a Júlia 👀
+            </button>
+
+            <div id="answer"></div>
+
+        </section>
+
+
+        <!-- TELA 5 -->
+
+        <section class="screen" id="tela5">
+
+            <div class="emoji">✨</div>
+
+            <h2>Deixa eu consultar o futuro...</h2>
+
+            <p>
+                Estou tentando descobrir o que
+                o destino preparou para nós.
+            </p>
+
+            <div class="progress">
+                <div
+                    class="progress-bar"
+                    id="progress">
+                </div>
+            </div>
+
+            <p id="future">
+                Consultando as estrelas... 🌙
+            </p>
+
+        </section>
+
+
+        <!-- TELA FINAL -->
+
+        <section class="screen" id="tela6">
+
+            <div class="big-heart">💗</div>
+
+            <h1>Júlia...</h1>
+
+            <p>
+                Chegamos na última parte.
+            </p>
+
+            <div class="letter">
+
+                <p>
+                    Meu amor,
+                </p>
+
+                <p>
+                    eu queria poder escrever uma mensagem
+                    bonita o suficiente para explicar tudo
+                    o que sinto por você.
+                </p>
+
+                <p>
+                    Mas quanto mais eu penso nisso,
+                    mais percebo que não existe texto,
+                    música ou presente no mundo que consiga
+                    explicar completamente o tamanho do carinho
+                    que eu tenho por você.
+                </p>
+
+                <p>
+                    Você entrou na minha vida e, de alguma
+                    forma, conseguiu deixar tudo um pouquinho
+                    mais bonito.
+                </p>
+
+                <p>
+                    Um dia normal fica melhor quando eu
+                    converso com você.
+                    Uma coisa simples fica especial quando
+                    posso compartilhar com você.
+                    E até aqueles momentos em que não fazemos
+                    absolutamente nada conseguem ser bons
+                    só porque você está ali.
+                </p>
+
+                <p>
+                    Eu amo o seu jeito.
+                    Amo suas manias.
+                    Amo suas brincadeiras.
+                    Amo seu sorriso.
+                    Amo a maneira como você consegue ser
+                    simplesmente você.
+                </p>
+
+                <p>
+                    E talvez você não perceba, mas existem
+                    vários momentos em que eu simplesmente
+                    paro e penso:
+                </p>
+
+                <p>
+                    <strong>
+                        "Caramba... eu realmente tenho muita
+                        sorte por ter a Júlia na minha vida."
+                    </strong>
+                </p>
+
+                <p>
+                    Eu não prometo que todos os dias serão
+                    perfeitos, porque a vida não é assim.
+                    Mas prometo que, enquanto eu puder,
+                    vou tentar estar ao seu lado nos dias
+                    bons, nos dias difíceis, nas risadas,
+                    nas besteiras e em todos aqueles pequenos
+                    momentos que acabam se tornando as nossas
+                    melhores lembranças.
+                </p>
+
+                <p>
+                    Se algum dia você esquecer o quanto é
+                    especial, volte aqui.
+                </p>
+
+                <p>
+                    Leia essa mensagem novamente.
+                </p>
+
+                <p>
+                    E lembre-se que existe alguém nesse mundo
+                    que olha para você e pensa que encontrou
+                    uma pessoa simplesmente incrível.
+                </p>
+
+                <p>
+                    Essa pessoa sou eu.
+                </p>
+
+                <p>
+                    Júlia, obrigado por existir.
+                    Obrigado por ser você.
+                    Obrigado por fazer parte da minha vida.
+                </p>
+
+                <p>
+                    E se eu pudesse escolher uma pessoa para
+                    conhecer novamente, entre todas as pessoas
+                    desse mundo...
+                </p>
+
+                <p>
+                    <strong>
+                        eu escolheria você.
+                    </strong>
+                </p>
+
+                <p>
+                    Hoje.
+                    <br>
+                    Amanhã.
+                    <br>
+                    Depois de amanhã.
+                    <br>
+                    E em todos os dias que ainda estiverem
+                    esperando por nós.
+                </p>
+
+                <p>
+                    Eu te amo, Júlia.
+                    ❤️
+                </p>
+
+                <div class="signature">
+                    Com todo o meu amor,<br>
+                    para a garota que faz meu coração sorrir. 💗
+                </div>
+
+            </div>
+
+            <br>
+
+            <button onclick="finalMessage()">
+                Mais uma coisinha... 🥺
+            </button>
+
+            <p id="finalText"></p>
+
+            <p class="small">
+                Feito especialmente para você, Júlia. 🌷
+            </p>
+
+        </section>
+
+    </main>
+
+
+    <script>
+
+        /* ================================
+           TROCAR DE TELA
+        ================================= */
+
+        function goTo(number) {
+
+            const screens =
+                document.querySelectorAll(".screen");
+
+            screens.forEach(function(screen) {
+                screen.classList.remove("active");
+            });
+
+            const next =
+                document.getElementById("tela" + number);
+
+            if (next) {
+                next.classList.add("active");
+            }
+
+            createHearts();
+
+            if (number === 5) {
+                startFuture();
+            }
+        }
+
+
+        /* ================================
+           MENSAGENS ALEATÓRIAS
+        ================================= */
+
+        const messages = [
+
+            "Júlia, você é meu pensamento favorito. 💗",
+
+            "Eu tenho muita sorte de ter você na minha vida. 🥹",
+
+            "Você consegue deixar meus dias mais bonitos sem nem perceber.",
+
+            "Se eu pudesse te dar uma coisa agora, seria um abraço bem apertado. 🤗",
+
+            "Você é especial para mim de um jeito que eu nem consigo explicar.",
+
+            "Às vezes eu lembro de você do nada e começo a sorrir. 🤭",
+
+            "Eu escolheria você de novo e de novo.",
+
+            "Seu sorriso tem um lugar especial no meu coração. 🌷",
+
+            "Júlia, nunca se esqueça do quanto você é incrível.",
+
+            "Meu lugar favorito provavelmente é qualquer lugar onde você esteja.",
+
+            "Você faz pequenas coisas virarem grandes momentos.",
+
+            "Eu gosto de você mais do que consigo colocar em palavras.",
+
+            "Se meu coração pudesse falar, provavelmente ele diria seu nome. ❤️",
+
+            "Você é uma das partes mais bonitas da minha vida.",
+
+            "Só passando para lembrar: eu te amo, Júlia. 💗"
+        ];
+
+
+        function randomMessage() {
+
+            const box =
+                document.getElementById("surprise");
+
+            const index =
+                Math.floor(
+                    Math.random() * messages.length
+                );
+
+            box.style.opacity = "0";
+
+            setTimeout(function() {
+
+                box.textContent =
+                    messages[index];
+
+                box.style.opacity = "1";
+
+            }, 200);
+
+            createHearts();
+        }
+
+
+        /* ================================
+           PERGUNTA
+        ================================= */
+
+        function answer(option) {
+
+            const result =
+                document.getElementById("answer");
+
+            result.style.marginTop = "20px";
+
+            if (option === 1) {
+
+                result.innerHTML =
+                    "<p>ACERTOU! 🥹💗</p>";
+
+                setTimeout(function() {
+                    goTo(5);
+                }, 1500);
+
+            } else if (option === 2) {
+
+                result.innerHTML =
+                    "<p>Essa resposta está ainda mais correta. 😂💗</p>";
+
+                setTimeout(function() {
+                    goTo(5);
+                }, 1700);
+
+            } else {
+
+                result.innerHTML =
+                    "<p>“Acho” não! É certeza! 😂💕</p>";
+
+                setTimeout(function() {
+                    goTo(5);
+                }, 1800);
+            }
+        }
+
+
+        /* ================================
+           PREVISÃO
+        ================================= */
+
+        function startFuture() {
+
+            const progress =
+                document.getElementById("progress");
+
+            const future =
+                document.getElementById("future");
+
+            progress.style.width = "0%";
+
+            future.textContent =
+                "Procurando pistas sobre nós... 🌙";
+
+            setTimeout(function() {
+
+                progress.style.width = "25%";
+
+                future.textContent =
+                    "Encontrando momentos felizes... ✨";
+
+            }, 700);
+
+            setTimeout(function() {
+
+                progress.style.width = "50%";
+
+                future.textContent =
+                    "Calculando quantidade de abraços... 🥰";
+
+            }, 1400);
+
+            setTimeout(function() {
+
+                progress.style.width = "75%";
+
+                future.textContent =
+                    "Calculando quantidade de amor... 💗";
+
+            }, 2100);
+
+            setTimeout(function() {
+
+                progress.style.width = "100%";
+
+                future.textContent =
+                    "Resultado encontrado: muitos sorrisos, muitos abraços e muito amor. ❤️";
+
+            }, 2900);
+
+            setTimeout(function() {
+
+                goTo(6);
+
+            }, 4800);
+        }
+
+
+        /* ================================
+           MENSAGEM FINAL
+        ================================= */
+
+        function finalMessage() {
+
+            const texts = [
+
+                "Agora vem cá me dar um abraço. 🥺💗",
+
+                "Eu te amo, Júlia. Mais do que esse pequeno site consegue explicar. ❤️",
+
+                "Se eu pudesse, transformaria essa mensagem em um abraço para você. 🤗",
+
+                "Você é meu presente favorito. 🎀❤️",
+
+                "Pronto... agora você tem um pedacinho do meu coração aqui. 💗"
+
+            ];
+
+            const index =
+                Math.floor(
+                    Math.random() * texts.length
+                );
+
+            document.getElementById("finalText").innerHTML =
+                "<br><strong style='color:#e65387;font-size:20px;'>" +
+                texts[index] +
+                "</strong>";
+
+            createHearts();
+        }
+
+
+        /* ================================
+           CORAÇÕES
+        ================================= */
+
+        function createHearts() {
+
+            const container =
+                document.getElementById("backgroundHearts");
+
+            const heartTypes = [
+                "💗",
+                "💕",
+                "💖",
+                "💘",
+                "🌷",
+                "✨"
+            ];
+
+            for (let i = 0; i < 10; i++) {
+
+                const heart =
+                    document.createElement("div");
+
+                heart.className =
+                    "floating-heart";
+
+                const index =
+                    Math.floor(
+                        Math.random() * heartTypes.length
+                    );
+
+                heart.textContent =
+                    heartTypes[index];
+
+                heart.style.left =
+                    Math.random() * 100 + "%";
+
+                heart.style.fontSize =
+                    15 + Math.random() * 25 + "px";
+
+                heart.style.animationDuration =
+                    4 + Math.random() * 5 + "s";
+
+                container.appendChild(heart);
+
+                setTimeout(function() {
+                    heart.remove();
+                }, 9000);
+            }
+        }
+
+
+        /* ================================
+           ESTRELAS
+        ================================= */
+
+        function createSparkles() {
+
+            for (let i = 0; i < 45; i++) {
+
+                const sparkle =
+                    document.createElement("div");
+
+                sparkle.className =
+                    "sparkle";
+
+                sparkle.textContent = "✦";
+
+                sparkle.style.left =
+                    Math.random() * 100 + "%";
+
+                sparkle.style.top =
+                    Math.random() * 100 + "%";
+
+                sparkle.style.animationDelay =
+                    Math.random() * 3 + "s";
+
+                document.body.appendChild(sparkle);
+            }
+        }
+
+
+        /* ================================
+           CORAÇÕES AUTOMÁTICOS
+        ================================= */
+
+        setInterval(function() {
+
+            createHearts();
+
+        }, 1800);
+
+
+        /* ================================
+           INICIAR
+        ================================= */
+
+        createSparkles();
+        createHearts();
+
+    </script>
+
+</body>
+</html>
+```
