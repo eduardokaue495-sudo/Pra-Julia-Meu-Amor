@@ -1,0 +1,2140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Para Julia ❤️🌷</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#08050a;
+    color:#fff;
+    font-family:'Poppins',sans-serif;
+    overflow-x:hidden;
+}
+
+/* =========================
+   FUNDO
+========================= */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-5;
+
+    background:
+        radial-gradient(circle at 15% 20%,rgba(255,100,170,.13),transparent 30%),
+        radial-gradient(circle at 85% 70%,rgba(255,200,120,.08),transparent 30%),
+        linear-gradient(135deg,#08050a,#180b15,#08050a);
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:1000;
+
+    background:
+        radial-gradient(circle at center,transparent 50%,rgba(0,0,0,.45));
+}
+
+/* =========================
+   ESTRELAS
+========================= */
+
+.stars{
+    position:fixed;
+    inset:0;
+    z-index:-3;
+    pointer-events:none;
+}
+
+.star{
+    position:absolute;
+    width:2px;
+    height:2px;
+    background:#fff;
+    border-radius:50%;
+    animation:twinkle 3s infinite alternate;
+}
+
+@keyframes twinkle{
+    from{
+        opacity:.15;
+        transform:scale(.6);
+    }
+    to{
+        opacity:1;
+        transform:scale(1.5);
+    }
+}
+
+/* =========================
+   PETALAS
+========================= */
+
+.petal{
+    position:fixed;
+    top:-30px;
+    width:13px;
+    height:19px;
+
+    background:linear-gradient(135deg,#fff,#ffd0e2);
+
+    border-radius:100% 0 100% 0;
+
+    opacity:.6;
+    pointer-events:none;
+
+    z-index:20;
+
+    animation:fall linear forwards;
+}
+
+@keyframes fall{
+    0%{
+        transform:translateY(-30px) rotate(0deg);
+    }
+
+    100%{
+        transform:
+            translateY(110vh)
+            translateX(120px)
+            rotate(720deg);
+    }
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    padding:40px 20px;
+
+    position:relative;
+}
+
+.hero-content{
+    max-width:900px;
+    animation:appear 1.5s ease;
+}
+
+@keyframes appear{
+    from{
+        opacity:0;
+        transform:translateY(35px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.small-title{
+    color:#ffc2d9;
+
+    letter-spacing:5px;
+
+    text-transform:uppercase;
+
+    font-size:11px;
+
+    margin-bottom:25px;
+}
+
+/* CORREÇÃO DO J */
+
+h1{
+    position:relative;
+    z-index:5;
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:clamp(75px,15vw,165px);
+
+    line-height:1;
+
+    font-weight:700;
+
+    color:#fff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff 0%,
+            #ffe6f0 45%,
+            #f1abc5 100%
+        );
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+    padding:12px 25px;
+
+    filter:
+        drop-shadow(0 0 15px rgba(255,200,220,.35))
+        drop-shadow(0 0 45px rgba(255,140,180,.15));
+}
+
+.hero-subtitle{
+    margin-top:25px;
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:clamp(24px,4vw,40px);
+
+    color:#f8dce7;
+
+    font-style:italic;
+}
+
+.hero-description{
+    max-width:620px;
+
+    margin:25px auto;
+
+    color:#bbaab6;
+
+    line-height:1.9;
+
+    font-size:14px;
+}
+
+/* =========================
+   GIF
+========================= */
+
+.gif-container{
+    width:180px;
+    height:180px;
+
+    margin:35px auto 15px;
+
+    border-radius:50%;
+
+    overflow:hidden;
+
+    border:1px solid rgba(255,200,220,.25);
+
+    box-shadow:
+        0 0 35px rgba(255,160,200,.18),
+        0 0 90px rgba(255,160,200,.08);
+
+    animation:flowerFloat 4s ease-in-out infinite;
+
+    background:rgba(255,255,255,.04);
+}
+
+.gif-container img{
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    display:block;
+}
+
+/*
+   Você pode colocar aqui o link de um GIF de lírio.
+   Exemplo:
+
+   <img src="SEU-GIF-AQUI.gif">
+*/
+
+@keyframes flowerFloat{
+    50%{
+        transform:translateY(-10px) rotate(2deg);
+    }
+}
+
+.scroll{
+    margin-top:45px;
+
+    display:inline-flex;
+
+    flex-direction:column;
+
+    gap:10px;
+
+    color:#d7b6c6;
+
+    text-decoration:none;
+
+    font-size:11px;
+
+    letter-spacing:3px;
+}
+
+.scroll span{
+    animation:bounce 1.5s infinite;
+}
+
+@keyframes bounce{
+    50%{
+        transform:translateY(8px);
+    }
+}
+
+/* =========================
+   SEÇÕES
+========================= */
+
+section{
+    padding:120px 20px;
+
+    position:relative;
+}
+
+.container{
+    max-width:1050px;
+
+    margin:auto;
+}
+
+.section-title{
+    text-align:center;
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:clamp(45px,8vw,75px);
+
+    font-weight:500;
+
+    color:#ffe5ee;
+
+    margin-bottom:15px;
+}
+
+.section-subtitle{
+    text-align:center;
+
+    color:#a996a4;
+
+    max-width:650px;
+
+    margin:0 auto 65px;
+
+    line-height:1.9;
+
+    font-size:14px;
+}
+
+/* =========================
+   LÍRIO CSS
+========================= */
+
+.lily-area{
+    display:flex;
+    justify-content:center;
+
+    margin:80px 0;
+}
+
+.lily{
+    position:relative;
+
+    width:250px;
+    height:260px;
+
+    animation:flowerFloat 5s ease-in-out infinite;
+
+    filter:drop-shadow(
+        0 0 35px rgba(255,180,210,.18)
+    );
+}
+
+.petal-flower{
+    position:absolute;
+
+    width:105px;
+    height:150px;
+
+    left:72px;
+    top:35px;
+
+    border-radius:100% 0 100% 0;
+
+    transform-origin:bottom center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff,
+            #fbd4e3
+        );
+
+    box-shadow:
+        inset -10px -15px 20px
+        rgba(190,70,110,.12);
+}
+
+.petal-flower:nth-child(1){
+    transform:rotate(0deg) translateY(-20px);
+}
+
+.petal-flower:nth-child(2){
+    transform:rotate(60deg) translateY(-20px);
+}
+
+.petal-flower:nth-child(3){
+    transform:rotate(120deg) translateY(-20px);
+}
+
+.petal-flower:nth-child(4){
+    transform:rotate(180deg) translateY(-20px);
+}
+
+.petal-flower:nth-child(5){
+    transform:rotate(240deg) translateY(-20px);
+}
+
+.petal-flower:nth-child(6){
+    transform:rotate(300deg) translateY(-20px);
+}
+
+.flower-center{
+    position:absolute;
+
+    width:40px;
+    height:40px;
+
+    background:
+        radial-gradient(
+            circle,
+            #ffeab1,
+            #d49c51
+        );
+
+    border-radius:50%;
+
+    left:105px;
+    top:105px;
+
+    z-index:4;
+
+    box-shadow:
+        0 0 30px rgba(255,205,100,.5);
+}
+
+.stem{
+    position:absolute;
+
+    width:8px;
+    height:165px;
+
+    background:
+        linear-gradient(
+            #6b9c58,
+            #203d25
+        );
+
+    left:120px;
+    top:170px;
+
+    border-radius:20px;
+
+    z-index:-1;
+}
+
+/* =========================
+   CARDS
+========================= */
+
+.cards{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:20px;
+}
+
+.card{
+    background:
+        rgba(255,255,255,.035);
+
+    border:
+        1px solid rgba(255,255,255,.08);
+
+    border-radius:25px;
+
+    padding:40px 28px;
+
+    backdrop-filter:blur(15px);
+
+    transition:.4s ease;
+
+    text-align:center;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+
+    border-color:
+        rgba(255,190,215,.3);
+
+    background:
+        rgba(255,255,255,.055);
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.3);
+}
+
+.card-icon{
+    font-size:38px;
+
+    margin-bottom:20px;
+}
+
+.card h3{
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:30px;
+
+    color:#ffe4ed;
+
+    margin-bottom:12px;
+}
+
+.card p{
+    color:#a999a5;
+
+    line-height:1.8;
+
+    font-size:13px;
+}
+
+/* =========================
+   CONTADOR
+========================= */
+
+.counter-box{
+    max-width:900px;
+
+    margin:auto;
+
+    padding:50px 25px;
+
+    border-radius:30px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.05),
+            rgba(255,180,210,.035)
+        );
+
+    border:
+        1px solid rgba(255,255,255,.08);
+
+    text-align:center;
+}
+
+.counter-label{
+    color:#bda8b4;
+
+    margin-bottom:35px;
+
+    font-size:14px;
+}
+
+.counter{
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:15px;
+}
+
+.number{
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:48px;
+
+    color:#ffe0eb;
+}
+
+.unit{
+    color:#968693;
+
+    font-size:10px;
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+}
+
+.start-date{
+    margin-top:30px;
+
+    color:#786570;
+
+    font-size:11px;
+}
+
+/* =========================
+   MEMÓRIAS
+========================= */
+
+.memory{
+    max-width:750px;
+
+    margin:auto;
+
+    text-align:center;
+}
+
+.memory-box{
+    padding:60px 30px;
+
+    border-radius:30px;
+
+    border:
+        1px solid rgba(255,255,255,.08);
+
+    background:
+        rgba(255,255,255,.03);
+}
+
+#memoryText{
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:32px;
+
+    color:#ffe3ec;
+
+    min-height:85px;
+
+    transition:.4s;
+}
+
+.memory-button{
+    margin-top:30px;
+
+    background:transparent;
+
+    border:
+        1px solid #a56d83;
+
+    color:#e9b6c8;
+
+    padding:13px 25px;
+
+    border-radius:50px;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.memory-button:hover{
+    background:#e79ab7;
+
+    color:#211018;
+
+    transform:scale(1.05);
+}
+
+/* =========================
+   CARTA
+========================= */
+
+.letter-wrapper{
+    max-width:760px;
+
+    margin:auto;
+}
+
+.letter{
+    background:#f9edf1;
+
+    color:#4b3440;
+
+    padding:clamp(35px,6vw,70px);
+
+    border-radius:5px;
+
+    box-shadow:
+        0 30px 100px rgba(0,0,0,.4);
+
+    transform:rotate(-1deg);
+
+    position:relative;
+}
+
+.letter::before{
+    content:"♥";
+
+    position:absolute;
+
+    right:25px;
+    top:20px;
+
+    color:#d889a5;
+
+    font-size:25px;
+}
+
+.letter h3{
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:42px;
+
+    margin-bottom:25px;
+}
+
+.letter p{
+    line-height:2;
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:20px;
+
+    margin-bottom:18px;
+}
+
+.signature{
+    margin-top:30px;
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:28px;
+
+    font-style:italic;
+
+    text-align:right;
+}
+
+/* =========================
+   BOTÃO SURPRESA
+========================= */
+
+.surprise{
+    text-align:center;
+}
+
+.love-button{
+    border:
+        1px solid rgba(255,190,215,.35);
+
+    color:#ffe7ef;
+
+    background:
+        rgba(255,255,255,.04);
+
+    padding:18px 35px;
+
+    border-radius:100px;
+
+    cursor:pointer;
+
+    font-family:inherit;
+
+    transition:.3s;
+
+    font-size:14px;
+}
+
+.love-button:hover{
+    background:#e79ab7;
+
+    color:#211018;
+
+    transform:scale(1.07);
+
+    box-shadow:
+        0 10px 40px rgba(231,154,183,.3);
+}
+
+#surpriseText{
+    min-height:65px;
+
+    margin-top:30px;
+
+    color:#f5cbd9;
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:28px;
+
+    font-style:italic;
+
+    transition:.4s;
+}
+
+/* =========================
+   GALERIA
+========================= */
+
+.gallery{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:20px;
+}
+
+.photo{
+    min-height:260px;
+
+    border-radius:25px;
+
+    border:
+        1px solid rgba(255,255,255,.08);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,190,215,.08),
+            rgba(255,255,255,.025)
+        );
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    padding:25px;
+
+    transition:.4s;
+
+    cursor:pointer;
+}
+
+.photo:hover{
+    transform:
+        scale(1.03)
+        rotate(1deg);
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.3);
+}
+
+.photo span{
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:25px;
+
+    color:#f6dce6;
+}
+
+/* =========================
+   AMOR RANDOM
+========================= */
+
+.love-meter{
+    max-width:700px;
+
+    margin:auto;
+
+    text-align:center;
+}
+
+.meter{
+    height:12px;
+
+    border-radius:20px;
+
+    background:#21151e;
+
+    overflow:hidden;
+
+    margin:30px 0;
+}
+
+.meter-fill{
+    width:0%;
+
+    height:100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #b85d7d,
+            #ffb5cf,
+            #fff
+        );
+
+    transition:
+        width 2s cubic-bezier(.2,.8,.2,1);
+}
+
+.meter-text{
+    color:#eac2d1;
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:25px;
+}
+
+/* =========================
+   FINAL
+========================= */
+
+.final{
+    min-height:85vh;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+}
+
+.final h2{
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:
+        clamp(60px,11vw,120px);
+
+    line-height:.85;
+
+    color:#ffe4ed;
+}
+
+.final p{
+    margin:35px auto;
+
+    max-width:620px;
+
+    color:#aa99a5;
+
+    line-height:1.9;
+}
+
+.big-heart{
+    font-size:60px;
+
+    display:inline-block;
+
+    animation:heartBeat 1.3s infinite;
+}
+
+@keyframes heartBeat{
+    50%{
+        transform:scale(1.25);
+    }
+}
+
+/* =========================
+   MODAL
+========================= */
+
+.modal{
+    position:fixed;
+
+    inset:0;
+
+    background:
+        rgba(5,2,7,.85);
+
+    backdrop-filter:blur(12px);
+
+    display:none;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:20px;
+
+    z-index:500;
+}
+
+.modal.active{
+    display:flex;
+}
+
+.modal-box{
+    max-width:600px;
+
+    width:100%;
+
+    background:
+        linear-gradient(
+            145deg,
+            #1d101a,
+            #0e080d
+        );
+
+    border:
+        1px solid rgba(255,200,220,.2);
+
+    border-radius:30px;
+
+    padding:50px 35px;
+
+    text-align:center;
+
+    box-shadow:
+        0 30px 100px #000;
+}
+
+.modal-box h3{
+    font-family:'Cormorant Garamond',serif;
+
+    color:#ffe1eb;
+
+    font-size:42px;
+
+    margin-bottom:20px;
+}
+
+.modal-box p{
+    color:#bda9b5;
+
+    line-height:1.9;
+}
+
+.close{
+    margin-top:30px;
+
+    border:1px solid #8f5b70;
+
+    background:transparent;
+
+    color:#e8b9ca;
+
+    border-radius:50px;
+
+    padding:12px 25px;
+
+    cursor:pointer;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    padding:35px;
+
+    text-align:center;
+
+    color:#635460;
+
+    font-size:11px;
+
+    letter-spacing:1px;
+}
+
+/* =========================
+   RESPONSIVO
+========================= */
+
+@media(max-width:750px){
+
+    .cards,
+    .gallery{
+        grid-template-columns:1fr;
+    }
+
+    .counter{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .letter{
+        transform:none;
+    }
+
+    section{
+        padding:85px 18px;
+    }
+
+    #memoryText{
+        font-size:27px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ESTRELAS -->
+<div class="stars" id="stars"></div>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<header class="hero">
+
+<div class="hero-content">
+
+<div class="small-title">
+uma página feita especialmente para
+</div>
+
+<h1>Julia</h1>
+
+
+<!-- GIF DO LÍRIO -->
+
+<div class="gif-container">
+
+    <!--
+    COLOQUE SEU GIF DE LÍRIO AQUI.
+
+    Exemplo:
+
+    <img src="lirio.gif" alt="Lírio florescendo">
+
+    Se o arquivo estiver na mesma pasta do index.html,
+    basta colocar:
+
+    <img src="lirio.gif" alt="Lírio florescendo">
+    -->
+
+    <div style="
+        width:100%;
+        height:100%;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        font-size:75px;
+    ">
+        🌷
+    </div>
+
+</div>
+
+
+<div class="hero-subtitle">
+meu lírio favorito.
+</div>
+
+<p class="hero-description">
+
+Entre todas as flores do mundo,
+eu ainda escolheria aquela que me lembra você.
+
+Porque algumas pessoas simplesmente
+deixam a vida mais bonita.
+
+</p>
+
+<a href="#historia" class="scroll">
+
+<span>↓</span>
+
+descobrir
+
+</a>
+
+</div>
+
+</header>
+
+
+<!-- =========================
+     HISTÓRIA
+========================= -->
+
+<section id="historia">
+
+<div class="container">
+
+<h2 class="section-title">
+Para o meu amor
+</h2>
+
+<p class="section-subtitle">
+
+Se alguém me perguntasse quando começou
+uma das melhores partes da minha vida,
+eu responderia:
+
+<strong>01 de setembro de 2026, às 23:46.</strong>
+
+</p>
+
+
+<div class="lily-area">
+
+<div class="lily">
+
+<div class="petal-flower"></div>
+<div class="petal-flower"></div>
+<div class="petal-flower"></div>
+<div class="petal-flower"></div>
+<div class="petal-flower"></div>
+<div class="petal-flower"></div>
+
+<div class="flower-center"></div>
+
+<div class="stem"></div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     3 MOTIVOS
+========================= -->
+
+<section>
+
+<div class="container">
+
+<h2 class="section-title">
+Por que você?
+</h2>
+
+<p class="section-subtitle">
+Porque explicar o que sinto por você
+em apenas uma frase seria impossível.
+</p>
+
+
+<div class="cards">
+
+<div class="card">
+
+<div class="card-icon">
+🌷
+</div>
+
+<h3>Seu jeito</h3>
+
+<p>
+Tem alguma coisa no seu jeito que consegue
+deixar até os momentos mais simples
+especiais.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-icon">
+✨
+</div>
+
+<h3>Seu sorriso</h3>
+
+<p>
+Eu poderia estar tendo o pior dia do mundo
+e ainda assim seria difícil não sorrir
+vendo você feliz.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-icon">
+❤️
+</div>
+
+<h3>Nós</h3>
+
+<p>
+No meio de tanta gente no mundo,
+eu ainda acho incrível que nossos caminhos
+tenham se encontrado.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     CONTADOR
+========================= -->
+
+<section>
+
+<div class="container">
+
+<h2 class="section-title">
+Nosso tempo
+</h2>
+
+<p class="section-subtitle">
+Desde aquele momento...
+</p>
+
+
+<div class="counter-box">
+
+<div class="counter-label">
+Juntos há
+</div>
+
+
+<div class="counter">
+
+<div>
+<div class="number" id="days">0</div>
+<div class="unit">dias</div>
+</div>
+
+<div>
+<div class="number" id="hours">0</div>
+<div class="unit">horas</div>
+</div>
+
+<div>
+<div class="number" id="minutes">0</div>
+<div class="unit">minutos</div>
+</div>
+
+<div>
+<div class="number" id="seconds">0</div>
+<div class="unit">segundos</div>
+</div>
+
+</div>
+
+
+<div class="start-date">
+01 de setembro de 2026 • 23:46 ❤️
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     MEMÓRIAS
+========================= -->
+
+<section>
+
+<div class="container">
+
+<h2 class="section-title">
+Pequenas coisas
+</h2>
+
+<p class="section-subtitle">
+Clique no botão.
+Uma nova mensagem vai aparecer.
+</p>
+
+
+<div class="memory">
+
+<div class="memory-box">
+
+<div id="memoryText">
+Clique aqui para lembrar de nós...
+</div>
+
+<button
+class="memory-button"
+onclick="nextMemory()">
+
+lembrar de nós ✨
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     GALERIA
+========================= -->
+
+<section>
+
+<div class="container">
+
+<h2 class="section-title">
+Nosso cantinho
+</h2>
+
+<p class="section-subtitle">
+Esses espaços podem virar fotos reais de vocês.
+Clique em qualquer um.
+</p>
+
+
+<div class="gallery">
+
+<div class="photo"
+onclick="openModal('Nossa primeira foto ❤️')">
+
+<span>
+📸<br><br>
+Nossa primeira foto
+</span>
+
+</div>
+
+
+<div class="photo"
+onclick="openModal('Aquele momento que eu nunca quero esquecer 🌷')">
+
+<span>
+🌷<br><br>
+Um momento inesquecível
+</span>
+
+</div>
+
+
+<div class="photo"
+onclick="openModal('Mais uma lembrança nossa ✨')">
+
+<span>
+✨<br><br>
+Uma memória especial
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     CARTA
+========================= -->
+
+<section>
+
+<div class="container">
+
+<h2 class="section-title">
+Uma carta para você
+</h2>
+
+
+<div class="letter-wrapper">
+
+<div class="letter">
+
+<h3>
+Minha Julia,
+</h3>
+
+
+<p>
+Eu queria conseguir explicar exatamente
+o tamanho do carinho que eu sinto por você.
+</p>
+
+
+<p>
+Mas algumas coisas não cabem em palavras.
+Cabem em abraços, olhares, risadas,
+conversas que duram horas e momentos
+que parecem passar rápido demais.
+</p>
+
+
+<p>
+Você é aquela pessoa que eu quero ter por perto
+nos dias bons, nos dias ruins e principalmente
+naqueles dias completamente aleatórios
+em que a gente só quer ficar junto.
+</p>
+
+
+<p>
+Se algum dia você esquecer o quanto é importante
+para mim, volte aqui.
+</p>
+
+
+<p>
+Porque eu quero que você tenha um lugar
+onde possa lembrar disso:
+</p>
+
+
+<p>
+<strong>
+Eu escolhi você.
+</strong>
+</p>
+
+
+<p>
+E escolheria você de novo.
+</p>
+
+
+<div class="signature">
+
+Com amor,<br>
+
+seu homem. ❤️
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     MEDIDOR DO AMOR
+========================= -->
+
+<section>
+
+<div class="container">
+
+<h2 class="section-title">
+Quanto eu amo você?
+</h2>
+
+<p class="section-subtitle">
+O problema é que esse contador não sabe
+onde parar...
+</p>
+
+
+<div class="love-meter">
+
+<div class="meter">
+
+<div
+class="meter-fill"
+id="loveFill">
+</div>
+
+</div>
+
+
+<div class="meter-text" id="loveText">
+Calculando...
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     SURPRESA
+========================= -->
+
+<section>
+
+<div class="container surprise">
+
+<h2 class="section-title">
+Tem uma coisa que eu queria te dizer...
+</h2>
+
+<p class="section-subtitle">
+Mas você vai precisar apertar o botão.
+</p>
+
+
+<button
+class="love-button"
+onclick="surprise()">
+
+abrir surpresa ❤️
+
+</button>
+
+
+<div id="surpriseText"></div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     FINAL
+========================= -->
+
+<section class="final">
+
+<div>
+
+<div class="big-heart">
+❤️
+</div>
+
+
+<h2>
+Eu amo você,<br>
+Julia.
+</h2>
+
+
+<p>
+
+E se você chegou até aqui,
+saiba que cada detalhe dessa página
+foi feito pensando em você.
+
+Mas mesmo assim...
+
+ela ainda não consegue mostrar
+nem metade do quanto você significa
+para mim.
+
+</p>
+
+
+<div class="big-heart">
+🌷
+</div>
+
+</div>
+
+</section>
+
+
+<footer>
+
+feito com amor, carinho e algumas linhas de código.
+
+<br><br>
+
+Para Julia. ♡
+
+</footer>
+
+
+<!-- =========================
+     MODAL
+========================= -->
+
+<div
+class="modal"
+id="modal">
+
+<div class="modal-box">
+
+<h3 id="modalTitle">
+❤️
+</h3>
+
+<p>
+Essa parte do site pode virar
+uma lembrança, uma foto,
+uma história ou qualquer coisa
+que seja só nossa.
+</p>
+
+<button
+class="close"
+onclick="closeModal()">
+
+fechar ❤️
+
+</button>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* =========================
+   ESTRELAS
+========================= */
+
+const stars =
+document.getElementById("stars");
+
+for(let i=0;i<120;i++){
+
+const star =
+document.createElement("div");
+
+star.className="star";
+
+star.style.left =
+Math.random()*100+"%";
+
+star.style.top =
+Math.random()*100+"%";
+
+star.style.animationDelay =
+Math.random()*3+"s";
+
+stars.appendChild(star);
+
+}
+
+
+/* =========================
+   PETALAS
+========================= */
+
+function createPetal(){
+
+const petal =
+document.createElement("div");
+
+petal.className="petal";
+
+petal.style.left =
+Math.random()*100+"vw";
+
+petal.style.animationDuration =
+(5+Math.random()*7)+"s";
+
+petal.style.opacity =
+.25+Math.random()*.5;
+
+document.body.appendChild(petal);
+
+setTimeout(()=>{
+petal.remove();
+},13000);
+
+}
+
+setInterval(createPetal,850);
+
+
+/* =========================
+   DATA DO RELACIONAMENTO
+========================= */
+
+/*
+
+01 DE SETEMBRO DE 2026
+23:46
+
+*/
+
+const startDate =
+new Date("2026-09-01T23:46:00");
+
+
+function updateCounter(){
+
+const now =
+new Date();
+
+const difference =
+now-startDate;
+
+
+/*
+
+Caso o relógio do navegador esteja
+antes da data inicial, zeramos.
+
+*/
+
+if(difference<0){
+
+document.getElementById("days").textContent="0";
+document.getElementById("hours").textContent="0";
+document.getElementById("minutes").textContent="0";
+document.getElementById("seconds").textContent="0";
+
+return;
+
+}
+
+
+const days =
+Math.floor(
+difference/
+(1000*60*60*24)
+);
+
+
+const hours =
+Math.floor(
+difference/
+(1000*60*60)
+)%24;
+
+
+const minutes =
+Math.floor(
+difference/
+(1000*60)
+)%60;
+
+
+const seconds =
+Math.floor(
+difference/1000
+)%60;
+
+
+document.getElementById("days")
+.textContent=days;
+
+
+document.getElementById("hours")
+.textContent=String(hours).padStart(2,"0");
+
+
+document.getElementById("minutes")
+.textContent=String(minutes).padStart(2,"0");
+
+
+document.getElementById("seconds")
+.textContent=String(seconds).padStart(2,"0");
+
+}
+
+updateCounter();
+
+setInterval(updateCounter,1000);
+
+
+/* =========================
+   MEMÓRIAS
+========================= */
+
+const memories=[
+
+"Seu sorriso é uma das minhas coisas favoritas no mundo. ❤️",
+
+"Eu amo quando a gente começa uma conversa e esquece completamente da hora.",
+
+"Você consegue transformar momentos simples em memórias que eu quero guardar.",
+
+"Meu lugar favorito continua sendo qualquer lugar onde você esteja.",
+
+"Eu ainda fico feliz só de lembrar que você é minha. 🌷",
+
+"Você é meu pequeno pedaço de paz no meio da bagunça.",
+
+"Entre tantas coincidências da vida, você foi a minha favorita.",
+
+"Eu espero continuar colecionando momentos com você por muito, muito tempo.",
+
+"E caso ninguém tenha lembrado hoje: você é muito amada.",
+
+"01/09/2026 às 23:46. Uma data que agora tem um significado enorme para mim. ❤️"
+
+];
+
+let memoryIndex=0;
+
+
+function nextMemory(){
+
+const text =
+document.getElementById("memoryText");
+
+text.style.opacity=0;
+
+
+setTimeout(()=>{
+
+text.textContent =
+memories[memoryIndex];
+
+text.style.opacity=1;
+
+
+memoryIndex++;
+
+
+if(memoryIndex>=memories.length){
+
+memoryIndex=0;
+
+}
+
+},250);
+
+}
+
+
+/* =========================
+   SURPRESA
+========================= */
+
+function surprise(){
+
+const messages=[
+
+"Julia, eu te amo mais do que esse site consegue explicar. ❤️",
+
+"Você é oficialmente minha pessoa favorita. E não existe botão para mudar isso. 😌",
+
+"Se eu tivesse que escolher novamente, escolheria você.",
+
+"Ei, você aí... sim, você. Eu sou completamente apaixonado por você. 🌷",
+
+"Prometo continuar tentando fazer você sorrir, mesmo quando eu estiver sendo um idiota. 😂❤️",
+
+"A verdade é simples: eu quero você na minha vida.",
+
+"Você é minha mulher, meu amor e uma das melhores partes da minha vida. ❤️",
+
+"Agora vem cá e me dá um beijo. Esse botão não aceita desculpas. 😌💋"
+
+];
+
+
+const text =
+document.getElementById("surpriseText");
+
+
+const message =
+messages[
+Math.floor(
+Math.random()*messages.length
+)
+];
+
+
+text.style.opacity=0;
+
+
+setTimeout(()=>{
+
+text.textContent=message;
+
+text.style.opacity=1;
+
+},200);
+
+
+/* CHUVA DE CORAÇÕES */
+
+for(let i=0;i<25;i++){
+
+setTimeout(()=>{
+
+const heart =
+document.createElement("div");
+
+heart.textContent =
+["❤️","💕","💗","💖","🌷"][Math.floor(Math.random()*5)];
+
+heart.style.position="fixed";
+
+heart.style.left =
+Math.random()*100+"vw";
+
+heart.style.bottom="-30px";
+
+heart.style.fontSize =
+(15+Math.random()*25)+"px";
+
+heart.style.zIndex="100";
+
+heart.style.pointerEvents="none";
+
+heart.style.transition=
+"transform 3s ease,opacity 3s ease";
+
+document.body.appendChild(heart);
+
+
+setTimeout(()=>{
+
+heart.style.transform=
+`translateY(-110vh) rotate(${Math.random()*360}deg)`;
+
+heart.style.opacity="0";
+
+},50);
+
+
+setTimeout(()=>{
+heart.remove();
+},3100);
+
+},i*90);
+
+}
+
+}
+
+
+/* =========================
+   MEDIDOR DO AMOR
+========================= */
+
+setTimeout(()=>{
+
+const fill =
+document.getElementById("loveFill");
+
+const text =
+document.getElementById("loveText");
+
+
+fill.style.width="100%";
+
+
+setTimeout(()=>{
+
+text.textContent=
+"∞% — aparentemente você quebrou o contador. ❤️";
+
+},1500);
+
+},800);
+
+
+/* =========================
+   MODAL
+========================= */
+
+function openModal(title){
+
+document.getElementById("modalTitle")
+.textContent=title;
+
+document.getElementById("modal")
+.classList.add("active");
+
+}
+
+
+function closeModal(){
+
+document.getElementById("modal")
+.classList.remove("active");
+
+}
+
+
+document.getElementById("modal")
+.addEventListener("click",function(e){
+
+if(e.target===this){
+
+closeModal();
+
+}
+
+});
+
+
+/* =========================
+   CLIQUE NO FUNDO
+========================= */
+
+document.addEventListener("click",function(e){
+
+/*
+
+Pequeno coração onde clicar,
+exceto em botões.
+
+*/
+
+if(
+e.target.tagName==="BUTTON" ||
+e.target.tagName==="A" ||
+e.target.tagName==="IMG"
+)return;
+
+
+const heart =
+document.createElement("div");
+
+heart.textContent="♡";
+
+heart.style.position="fixed";
+
+heart.style.left=e.clientX+"px";
+
+heart.style.top=e.clientY+"px";
+
+heart.style.color="#ffabc7";
+
+heart.style.fontSize="25px";
+
+heart.style.pointerEvents="none";
+
+heart.style.zIndex="200";
+
+heart.style.transition=
+"all 1s ease";
+
+document.body.appendChild(heart);
+
+
+setTimeout(()=>{
+
+heart.style.transform=
+"translateY(-60px) scale(1.5)";
+
+heart.style.opacity="0";
+
+},30);
+
+
+setTimeout(()=>{
+heart.remove();
+},1100);
+
+});
+
+</script>
+
+</body>
+</html>
