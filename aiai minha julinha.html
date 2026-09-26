@@ -1,0 +1,2259 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Para Julia ♡</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --night:#10141f;
+    --night2:#1c2638;
+    --cream:#f8f1e7;
+    --paper:#fffaf3;
+    --brown:#573e35;
+    --brown2:#8b7064;
+    --wine:#733d4c;
+    --rose:#b86d7d;
+    --roseLight:#e5b7bd;
+    --gold:#c9a86a;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    overflow-x:hidden;
+    background:var(--cream);
+    color:var(--brown);
+    font-family:"Montserrat",sans-serif;
+}
+
+button{
+    font-family:inherit;
+}
+
+::selection{
+    background:var(--rose);
+    color:white;
+}
+
+
+/* ===============================
+   TELA DE ABERTURA
+================================ */
+
+.opening{
+    position:fixed;
+    inset:0;
+    z-index:1000;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:
+        radial-gradient(
+            circle at 50% 35%,
+            #2c3850 0%,
+            #171d2b 42%,
+            #0b0f17 100%
+        );
+
+    transition:
+        opacity 1.2s ease,
+        visibility 1.2s ease;
+}
+
+.opening.hidden{
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+}
+
+.opening::before{
+    content:"";
+    position:absolute;
+    inset:0;
+
+    background-image:
+        radial-gradient(circle,#fff 1px,transparent 1px),
+        radial-gradient(circle,#fff 1px,transparent 1px);
+
+    background-size:130px 130px,220px 220px;
+
+    opacity:.2;
+}
+
+.opening-content{
+    position:relative;
+    z-index:2;
+
+    width:min(800px,90%);
+
+    text-align:center;
+
+    animation:appear 1.8s ease;
+}
+
+.tiny-heart{
+    color:var(--roseLight);
+
+    font-family:"Cormorant Garamond",serif;
+    font-size:34px;
+
+    margin-bottom:25px;
+
+    animation:heartbeat 2s infinite;
+}
+
+.opening-small{
+    color:#9da9be;
+
+    font-size:10px;
+    letter-spacing:4px;
+    text-transform:uppercase;
+
+    margin-bottom:25px;
+}
+
+.opening h1{
+    color:#f5eee5;
+
+    font-family:"Cormorant Garamond",serif;
+    font-size:clamp(55px,9vw,105px);
+    font-weight:300;
+
+    line-height:.9;
+    letter-spacing:-3px;
+}
+
+.opening-name{
+    margin-top:28px;
+
+    color:#c8aeb1;
+
+    font-family:"Cormorant Garamond",serif;
+    font-size:29px;
+    font-style:italic;
+}
+
+.enter{
+    margin-top:55px;
+
+    padding:17px 27px;
+
+    border:1px solid rgba(255,255,255,.22);
+
+    background:rgba(255,255,255,.04);
+
+    color:#eee6dd;
+
+    font-size:10px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+
+    cursor:pointer;
+
+    transition:.4s;
+}
+
+.enter:hover{
+    background:rgba(255,255,255,.1);
+    transform:translateY(-3px);
+}
+
+.enter span{
+    color:var(--roseLight);
+    margin-left:18px;
+}
+
+
+/* ===============================
+   NAV
+================================ */
+
+nav{
+    position:absolute;
+    top:0;
+    left:0;
+
+    width:100%;
+
+    padding:28px 5%;
+
+    z-index:100;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    color:white;
+}
+
+.logo{
+    font-family:"Cormorant Garamond",serif;
+    font-size:26px;
+}
+
+.logo span{
+    color:var(--roseLight);
+}
+
+.nav-right{
+    color:rgba(255,255,255,.55);
+
+    font-size:8px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+}
+
+
+/* ===============================
+   HERO
+================================ */
+
+.hero{
+    position:relative;
+
+    height:100vh;
+    min-height:700px;
+
+    overflow:hidden;
+
+    background:
+        linear-gradient(
+            180deg,
+            #101725 0%,
+            #1c2940 43%,
+            #48535c 70%,
+            #766c60 100%
+        );
+
+    color:white;
+}
+
+.stars{
+    position:absolute;
+    inset:0;
+
+    background-image:
+        radial-gradient(circle,rgba(255,255,255,.9) 1px,transparent 1px),
+        radial-gradient(circle,rgba(255,255,255,.5) 1px,transparent 1px);
+
+    background-size:130px 130px,220px 220px;
+
+    background-position:20px 30px,80px 100px;
+
+    opacity:.45;
+}
+
+.moon{
+    position:absolute;
+
+    top:13%;
+    right:13%;
+
+    width:105px;
+    height:105px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle at 30% 30%,
+            #fffdf1,
+            #ddd8c8
+        );
+
+    box-shadow:
+        0 0 45px rgba(255,244,204,.25),
+        0 0 100px rgba(255,244,204,.1);
+}
+
+.cloud{
+    position:absolute;
+
+    width:300px;
+    height:45px;
+
+    border-radius:100px;
+
+    background:rgba(255,255,255,.035);
+
+    filter:blur(6px);
+}
+
+.cloud.one{
+    top:36%;
+    left:-100px;
+}
+
+.cloud.two{
+    top:48%;
+    right:-100px;
+    width:380px;
+}
+
+
+/* HERO TEXT */
+
+.hero-content{
+    position:absolute;
+
+    z-index:30;
+
+    top:45%;
+    left:9%;
+
+    transform:translateY(-50%);
+
+    max-width:650px;
+}
+
+.eyebrow{
+    color:#bca9a5;
+
+    font-size:10px;
+    letter-spacing:4px;
+    text-transform:uppercase;
+}
+
+.hero h2{
+    margin-top:22px;
+
+    font-family:"Cormorant Garamond",serif;
+    font-weight:300;
+
+    font-size:clamp(70px,10vw,145px);
+
+    line-height:.72;
+    letter-spacing:-5px;
+}
+
+.hero h2 span{
+    display:block;
+
+    margin-top:18px;
+
+    color:#e6c3bd;
+
+    font-size:.65em;
+    font-style:italic;
+    letter-spacing:-2px;
+}
+
+.line{
+    width:80px;
+    height:1px;
+
+    margin:35px 0 25px;
+
+    background:var(--roseLight);
+}
+
+.hero-text{
+    max-width:430px;
+
+    color:rgba(255,255,255,.63);
+
+    font-family:"Cormorant Garamond",serif;
+    font-size:22px;
+
+    line-height:1.45;
+}
+
+.scroll{
+    margin-top:40px;
+
+    border:0;
+    background:none;
+
+    color:rgba(255,255,255,.55);
+
+    font-size:9px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+
+    cursor:pointer;
+}
+
+.scroll b{
+    display:inline-block;
+
+    margin-left:15px;
+
+    color:var(--roseLight);
+
+    font-size:20px;
+
+    animation:down 1.7s infinite;
+}
+
+
+/* ===============================
+   PAISAGEM
+================================ */
+
+.land{
+    position:absolute;
+
+    bottom:0;
+    left:0;
+
+    width:100%;
+    height:27%;
+
+    background:
+        linear-gradient(
+            180deg,
+            #2d3b31,
+            #14201c
+        );
+
+    clip-path:ellipse(75% 65% at 50% 100%);
+}
+
+.water{
+    position:absolute;
+
+    bottom:0;
+
+    width:100%;
+    height:16%;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(52,72,77,.8),
+            #142329
+        );
+}
+
+.reflection{
+    position:absolute;
+
+    top:35%;
+    left:60%;
+
+    width:130px;
+    height:4px;
+
+    border-radius:50%;
+
+    background:rgba(224,205,173,.25);
+
+    box-shadow:
+        20px 10px 0 rgba(224,205,173,.08),
+        -35px 20px 0 rgba(224,205,173,.08),
+        60px 28px 0 rgba(224,205,173,.05);
+}
+
+
+/* ===============================
+   CAPIVARA
+================================ */
+
+.capybara{
+    position:absolute;
+
+    right:16%;
+    bottom:13%;
+
+    z-index:35;
+
+    width:170px;
+    height:130px;
+
+    animation:float 4s ease-in-out infinite;
+}
+
+.capy-head{
+    position:absolute;
+
+    z-index:3;
+
+    right:5px;
+    top:5px;
+
+    width:90px;
+    height:72px;
+
+    border-radius:45%;
+
+    background:linear-gradient(
+        145deg,
+        #9b7158,
+        #654939
+    );
+}
+
+.capy-body{
+    position:absolute;
+
+    left:10px;
+    bottom:8px;
+
+    width:135px;
+    height:70px;
+
+    border-radius:55% 50% 35% 40%;
+
+    background:linear-gradient(
+        145deg,
+        #987059,
+        #614737
+    );
+}
+
+.ear{
+    position:absolute;
+
+    z-index:2;
+
+    width:22px;
+    height:22px;
+
+    border-radius:50%;
+
+    background:#75523e;
+}
+
+.ear.left{
+    right:66px;
+    top:-3px;
+}
+
+.ear.right{
+    right:13px;
+    top:-3px;
+}
+
+.eye{
+    position:absolute;
+
+    top:27px;
+
+    width:7px;
+    height:7px;
+
+    border-radius:50%;
+
+    background:#19130f;
+}
+
+.eye.left{
+    left:24px;
+}
+
+.eye.right{
+    right:22px;
+}
+
+.nose{
+    position:absolute;
+
+    left:50%;
+    bottom:17px;
+
+    transform:translateX(-50%);
+
+    width:20px;
+    height:13px;
+
+    border-radius:50%;
+
+    background:#2b1c16;
+}
+
+.smile{
+    position:absolute;
+
+    left:50%;
+    bottom:8px;
+
+    width:22px;
+    height:9px;
+
+    transform:translateX(-50%);
+
+    border-bottom:1px solid rgba(30,18,12,.7);
+
+    border-radius:50%;
+}
+
+.leg{
+    position:absolute;
+
+    bottom:0;
+
+    width:25px;
+    height:35px;
+
+    border-radius:0 0 12px 12px;
+
+    background:#604636;
+}
+
+.leg.one{
+    left:30px;
+}
+
+.leg.two{
+    right:30px;
+}
+
+.hero-caption{
+    position:absolute;
+
+    z-index:40;
+
+    bottom:27px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    color:rgba(255,255,255,.4);
+
+    font-size:8px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+
+    white-space:nowrap;
+}
+
+
+/* ===============================
+   SEÇÕES
+================================ */
+
+.section{
+    width:min(1120px,88%);
+
+    margin:auto;
+
+    padding:150px 0;
+}
+
+.number{
+    margin-bottom:30px;
+
+    color:var(--rose);
+
+    font-size:9px;
+    letter-spacing:4px;
+}
+
+.dark{
+    color:var(--rose);
+}
+
+
+/* INTRO */
+
+.intro{
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:80px;
+
+    align-items:end;
+}
+
+.intro h2,
+.letter-title h2,
+.moments h2,
+.final h2{
+    margin-top:25px;
+
+    color:var(--brown);
+
+    font-family:"Cormorant Garamond",serif;
+    font-size:clamp(55px,7vw,90px);
+
+    font-weight:400;
+
+    line-height:.85;
+
+    letter-spacing:-2px;
+}
+
+.intro-title p:last-child{
+    margin-top:25px;
+
+    color:var(--rose);
+
+    font-family:"Cormorant Garamond",serif;
+    font-size:25px;
+    font-style:italic;
+}
+
+.intro-text p{
+    max-width:470px;
+
+    margin-bottom:25px;
+
+    color:var(--brown2);
+
+    font-family:"Cormorant Garamond",serif;
+    font-size:23px;
+
+    line-height:1.45;
+}
+
+.intro-text .highlight{
+    color:var(--wine);
+
+    font-size:35px;
+    font-style:italic;
+}
+
+
+/* ===============================
+   COMPARAÇÃO
+================================ */
+
+.comparison{
+    display:grid;
+
+    grid-template-columns:1fr auto 1fr;
+
+    gap:35px;
+
+    align-items:center;
+
+    padding-top:0;
+}
+
+.card{
+    position:relative;
+
+    min-height:440px;
+
+    padding:45px;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    transition:.5s;
+}
+
+.card:hover{
+    transform:translateY(-12px);
+}
+
+.capy-card{
+    background:#eee4d5;
+}
+
+.julia-card{
+    background:#f2d9d9;
+}
+
+.card-number{
+    position:absolute;
+
+    top:25px;
+    left:25px;
+
+    color:rgba(80,50,40,.4);
+
+    font-size:9px;
+}
+
+.big-capy{
+    font-size:105px;
+
+    margin-bottom:20px;
+
+    animation:float 4s infinite;
+}
+
+.big-heart{
+    width:105px;
+    height:105px;
+
+    margin-bottom:20px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.3);
+
+    color:var(--wine);
+
+    font-family:"Cormorant Garamond",serif;
+    font-size:90px;
+}
+
+.card-label{
+    color:var(--brown2);
+
+    font-size:9px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+}
+
+.card h3{
+    margin-top:15px;
+
+    font-family:"Cormorant Garamond",serif;
+    font-size:40px;
+    font-weight:500;
+}
+
+.card p:last-child{
+    margin-top:6px;
+
+    color:var(--brown2);
+
+    font-size:12px;
+}
+
+.x{
+    color:var(--rose);
+
+    font-family:"Cormorant Garamond",serif;
+    font-size:45px;
+}
+
+
+/* ===============================
+   CARTA
+================================ */
+
+.letter-section{
+    display:grid;
+
+    grid-template-columns:.75fr 1.25fr;
+
+    gap:90px;
+
+    align-items:start;
+}
+
+.letter-title{
+    position:sticky;
+    top:100px;
+}
+
+.letter{
+    position:relative;
+
+    padding:75px 65px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #fffdf9,
+            #f8eee1
+        );
+
+    box-shadow:
+        0 30px 80px rgba(70,40,25,.09);
+}
+
+.letter:before{
+    content:"";
+
+    position:absolute;
+
+    inset:12px;
+
+    border:1px solid rgba(130,90,70,.1);
+
+    pointer-events:none;
+}
+
+.letter-top{
+    position:relative;
+
+    display:flex;
+    justify-content:space-between;
+
+    margin-bottom:55px;
+
+    color:var(--rose);
+
+    font-family:"Cormorant Garamond",serif;
+    font-size:25px;
+}
+
+.letter p{
+    position:relative;
+
+    margin-bottom:24px;
+
+    color:#735c50;
+
+    font-family:"Cormorant Garamond",serif;
+    font-size:22px;
+
+    line-height:1.55;
+}
+
+.greeting{
+    color:var(--wine)!important;
+
+    font-size:31px!important;
+}
+
+.emphasis{
+    color:var(--wine)!important;
+
+    font-size:27px!important;
+    font-style:italic;
+}
+
+.letter-final{
+    position:relative;
+
+    margin-top:55px;
+    padding-top:35px;
+
+    border-top:1px solid rgba(100,60,50,.12);
+}
+
+.letter-final h3{
+    color:var(--wine);
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:52px;
+    font-weight:400;
+
+    line-height:.9;
+    font-style:italic;
+}
+
+.signature{
+    margin-top:45px;
+
+    color:var(--brown2);
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:20px;
+}
+
+.signature strong{
+    color:var(--wine);
+
+    font-size:27px;
+}
+
+
+/* ===============================
+   MOMENTOS
+================================ */
+
+.moments{
+    padding-top:60px;
+}
+
+.moments-title{
+    margin-bottom:75px;
+}
+
+.moment-grid{
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    border-top:1px solid rgba(80,50,40,.15);
+}
+
+.moment{
+    min-height:300px;
+
+    padding:45px 25px;
+
+    border-right:1px solid rgba(80,50,40,.15);
+
+    transition:.4s;
+}
+
+.moment:last-child{
+    border-right:0;
+}
+
+.moment:hover{
+    background:rgba(255,255,255,.35);
+}
+
+.moment span{
+    color:var(--rose);
+
+    font-size:9px;
+    letter-spacing:2px;
+}
+
+.moment-icon{
+    margin:25px 0 18px;
+
+    font-size:45px;
+}
+
+.moment h3{
+    margin-bottom:10px;
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:32px;
+}
+
+.moment p{
+    color:var(--brown2);
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:17px;
+    line-height:1.45;
+}
+
+
+/* ===============================
+   SEÇÃO ESPECIAL
+================================ */
+
+.special{
+    position:relative;
+
+    min-height:800px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    overflow:hidden;
+
+    background:
+        radial-gradient(
+            ellipse at 50% 45%,
+            #35445d 0%,
+            #1d2638 45%,
+            #101520 100%
+        );
+
+    color:white;
+
+    text-align:center;
+}
+
+.special:before{
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background-image:
+        radial-gradient(circle,rgba(255,255,255,.8) 1px,transparent 1px);
+
+    background-size:150px 150px;
+
+    opacity:.3;
+}
+
+.special-content{
+    position:relative;
+    z-index:2;
+
+    max-width:850px;
+}
+
+.special h2{
+    margin-top:30px;
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:clamp(65px,9vw,120px);
+
+    font-weight:300;
+
+    line-height:.78;
+
+    letter-spacing:-3px;
+}
+
+.special-line{
+    width:60px;
+    height:1px;
+
+    margin:45px auto 30px;
+
+    background:var(--roseLight);
+}
+
+.special-text{
+    max-width:470px;
+
+    margin:auto;
+
+    color:rgba(255,255,255,.55);
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:22px;
+
+    line-height:1.4;
+}
+
+.special-capy{
+    margin-top:70px;
+
+    font-size:105px;
+
+    animation:float 4s infinite;
+}
+
+
+/* ===============================
+   FINAL
+================================ */
+
+.final{
+    min-height:750px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+}
+
+.final-content{
+    max-width:750px;
+}
+
+.final-text{
+    max-width:580px;
+
+    margin:35px auto 0;
+
+    color:var(--brown2);
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:23px;
+
+    line-height:1.45;
+}
+
+.final-heart{
+    margin-top:60px;
+
+    color:var(--rose);
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:80px;
+
+    animation:heartbeat 2s infinite;
+}
+
+.final h3{
+    color:var(--wine);
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:50px;
+
+    font-weight:400;
+
+    font-style:italic;
+}
+
+.forever{
+    margin-top:15px;
+
+    color:#a89086;
+
+    font-size:8px;
+    letter-spacing:4px;
+    text-transform:uppercase;
+}
+
+
+/* ===============================
+   FOOTER
+================================ */
+
+footer{
+    padding:70px 20px;
+
+    background:#181b24;
+
+    color:#9da0ab;
+
+    text-align:center;
+}
+
+.footer-capy{
+    font-size:55px;
+    margin-bottom:20px;
+}
+
+footer p{
+    color:#e4d9d0;
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:25px;
+}
+
+footer span{
+    display:block;
+
+    margin-top:8px;
+
+    font-size:8px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+}
+
+
+/* ===============================
+   PARTÍCULAS
+================================ */
+
+.particles{
+    position:fixed;
+    inset:0;
+
+    z-index:500;
+
+    pointer-events:none;
+}
+
+.particle{
+    position:absolute;
+
+    color:var(--rose);
+
+    opacity:0;
+
+    animation:up linear forwards;
+}
+
+
+/* ===============================
+   ANIMAÇÕES
+================================ */
+
+@keyframes appear{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes heartbeat{
+
+    0%,100%{
+        transform:scale(1);
+    }
+
+    15%{
+        transform:scale(1.15);
+    }
+
+    30%{
+        transform:scale(1);
+    }
+}
+
+@keyframes down{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(7px);
+    }
+}
+
+@keyframes float{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-12px);
+    }
+}
+
+@keyframes up{
+
+    0%{
+        opacity:0;
+        transform:
+            translateY(0)
+            rotate(0deg)
+            scale(.5);
+    }
+
+    15%{
+        opacity:.8;
+    }
+
+    100%{
+        opacity:0;
+        transform:
+            translateY(-100vh)
+            rotate(180deg)
+            scale(1.2);
+    }
+}
+
+
+/* ===============================
+   RESPONSIVO
+================================ */
+
+@media(max-width:850px){
+
+    .nav-right{
+        display:none;
+    }
+
+    .hero-content{
+        left:7%;
+        right:7%;
+        top:39%;
+    }
+
+    .hero h2{
+        font-size:75px;
+    }
+
+    .hero-text{
+        font-size:19px;
+    }
+
+    .moon{
+        width:70px;
+        height:70px;
+
+        right:8%;
+    }
+
+    .capybara{
+        right:7%;
+        bottom:13%;
+
+        transform:scale(.8);
+        transform-origin:bottom right;
+    }
+
+    .intro{
+        grid-template-columns:1fr;
+        gap:40px;
+    }
+
+    .comparison{
+        grid-template-columns:1fr;
+        gap:20px;
+    }
+
+    .x{
+        text-align:center;
+    }
+
+    .letter-section{
+        grid-template-columns:1fr;
+        gap:50px;
+    }
+
+    .letter-title{
+        position:static;
+    }
+
+    .moment-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .moment:nth-child(2){
+        border-right:0;
+    }
+}
+
+
+@media(max-width:550px){
+
+    .section{
+        width:88%;
+        padding:100px 0;
+    }
+
+    .opening h1{
+        font-size:65px;
+    }
+
+    .hero{
+        min-height:720px;
+    }
+
+    .hero h2{
+        font-size:68px;
+    }
+
+    .hero-text{
+        max-width:320px;
+    }
+
+    .capybara{
+        right:3%;
+        bottom:11%;
+
+        transform:scale(.7);
+    }
+
+    .hero-caption{
+        display:none;
+    }
+
+    .intro h2,
+    .letter-title h2,
+    .moments h2,
+    .final h2{
+        font-size:58px;
+    }
+
+    .letter{
+        padding:55px 30px;
+    }
+
+    .letter p{
+        font-size:20px;
+    }
+
+    .letter-final h3{
+        font-size:43px;
+    }
+
+    .moment-grid{
+        grid-template-columns:1fr;
+    }
+
+    .moment{
+        border-right:0;
+        border-bottom:1px solid rgba(80,50,40,.15);
+    }
+
+    .moment:last-child{
+        border-bottom:0;
+    }
+
+    .special{
+        min-height:650px;
+    }
+
+    .special h2{
+        font-size:68px;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================================
+     ABERTURA
+========================================= -->
+
+<div class="opening" id="opening">
+
+    <div class="opening-content">
+
+        <div class="tiny-heart">♡</div>
+
+        <p class="opening-small">
+            existe um lugar no mundo
+        </p>
+
+        <h1>
+            onde tudo fica<br>
+            mais bonito
+        </h1>
+
+        <p class="opening-name">
+            quando você está.
+        </p>
+
+        <button class="enter" id="enter">
+            entrar no nosso universo
+            <span>→</span>
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================
+     NAV
+========================================= -->
+
+<nav>
+
+    <div class="logo">
+        J <span>♡</span> J
+    </div>
+
+    <div class="nav-right">
+        nosso pequeno universo
+    </div>
+
+</nav>
+
+
+<!-- =========================================
+     HERO
+========================================= -->
+
+<section class="hero" id="inicio">
+
+    <div class="stars"></div>
+
+    <div class="moon"></div>
+
+    <div class="cloud one"></div>
+    <div class="cloud two"></div>
+
+
+    <div class="hero-content">
+
+        <p class="eyebrow">
+            para a mulher que faz meu mundo mais bonito
+        </p>
+
+        <h2>
+            Julia,
+            <span>meu amor.</span>
+        </h2>
+
+        <div class="line"></div>
+
+        <p class="hero-text">
+            Se o mundo fosse feito de pequenos momentos,
+            eu escolheria viver todos eles ao seu lado.
+        </p>
+
+        <button class="scroll" id="scroll">
+            descer devagar
+            <b>↓</b>
+        </button>
+
+    </div>
+
+
+    <div class="land"></div>
+
+    <div class="water">
+        <div class="reflection"></div>
+    </div>
+
+
+    <!-- CAPIVARA -->
+
+    <div class="capybara">
+
+        <div class="ear left"></div>
+        <div class="ear right"></div>
+
+        <div class="capy-head">
+
+            <div class="eye left"></div>
+            <div class="eye right"></div>
+
+            <div class="nose"></div>
+            <div class="smile"></div>
+
+        </div>
+
+        <div class="capy-body"></div>
+
+        <div class="leg one"></div>
+        <div class="leg two"></div>
+
+    </div>
+
+
+    <div class="hero-caption">
+        ♡ &nbsp; um lugar tranquilo para alguém especial &nbsp; ♡
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     INTRO
+========================================= -->
+
+<section class="intro section">
+
+    <div class="intro-title">
+
+        <div class="number">
+            01
+        </div>
+
+        <p class="eyebrow dark">
+            uma comparação importante
+        </p>
+
+        <h2>
+            Dizem que<br>
+            capivaras<br>
+            são fofas.
+        </h2>
+
+        <p>
+            Eu concordo.
+        </p>
+
+    </div>
+
+
+    <div class="intro-text">
+
+        <p>
+            Elas são tranquilas, carinhosas, companheiras
+            e têm aquele jeitinho especial de fazer qualquer
+            lugar parecer mais acolhedor.
+        </p>
+
+        <p>
+            Mas existe um pequeno problema nessa teoria...
+        </p>
+
+        <p class="highlight">
+            Eu conheci você.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     COMPARAÇÃO
+========================================= -->
+
+<section class="comparison section">
+
+    <div class="card capy-card">
+
+        <div class="card-number">
+            01
+        </div>
+
+        <div class="big-capy">
+            🦫
+        </div>
+
+        <p class="card-label">
+            uma capivara
+        </p>
+
+        <h3>
+            Fofura
+        </h3>
+
+        <p>
+            10/10. Absolutamente adorável.
+        </p>
+
+    </div>
+
+
+    <div class="x">
+        ×
+    </div>
+
+
+    <div class="card julia-card">
+
+        <div class="card-number">
+            02
+        </div>
+
+        <div class="big-heart">
+            ♡
+        </div>
+
+        <p class="card-label">
+            minha Julia
+        </p>
+
+        <h3>
+            Fofura
+        </h3>
+
+        <p>
+            Sem limite conhecido pelo ser humano.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     CARTA
+========================================= -->
+
+<section class="letter-section section">
+
+    <div class="letter-title">
+
+        <p class="eyebrow dark">
+            02 · algumas palavras
+        </p>
+
+        <h2>
+            Para você,<br>
+            minha princesa.
+        </h2>
+
+    </div>
+
+
+    <div class="letter">
+
+        <div class="letter-top">
+            <span>J</span>
+            <span>♡</span>
+            <span>J</span>
+        </div>
+
+        <p class="greeting">
+            Minha Julia,
+        </p>
+
+        <p>
+            Eu queria encontrar uma forma diferente de te dizer
+            o quanto você é importante para mim.
+        </p>
+
+        <p>
+            Então pensei que, em vez de simplesmente falar,
+            eu poderia construir um pequeno lugar na internet
+            que fosse só nosso.
+        </p>
+
+        <p>
+            Um lugar onde existissem estrelas para lembrar dos
+            nossos sonhos, um céu tranquilo para lembrar da paz
+            que você me traz e, é claro, uma capivara...
+            porque aparentemente toda história de amor precisa
+            de uma.
+        </p>
+
+        <p>
+            Você é a minha princesa, minha companheira e uma
+            das pessoas mais especiais que a vida poderia ter
+            colocado no meu caminho.
+        </p>
+
+        <p class="emphasis">
+            E eu espero que você nunca esqueça disso.
+        </p>
+
+        <p>
+            Quando você sorrir, espero que lembre que existe
+            alguém que ama esse sorriso.
+        </p>
+
+        <p>
+            Quando estiver triste, espero que lembre que existe
+            alguém querendo te abraçar.
+        </p>
+
+        <p>
+            E quando estiver feliz, espero poder estar por perto
+            para comemorar junto.
+        </p>
+
+
+        <div class="letter-final">
+
+            <p>
+                Porque, no fim das contas...
+            </p>
+
+            <h3>
+                eu escolheria você<br>
+                de novo.
+            </h3>
+
+            <div class="signature">
+                com amor,<br>
+                <strong>seu namorado ♡</strong>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     MOMENTOS
+========================================= -->
+
+<section class="moments section">
+
+    <div class="number">
+        03
+    </div>
+
+    <div class="moments-title">
+
+        <p class="eyebrow dark">
+            coisas que me fazem pensar em você
+        </p>
+
+        <h2>
+            Pequenas coisas.<br>
+            Grandes sentimentos.
+        </h2>
+
+    </div>
+
+
+    <div class="moment-grid">
+
+        <article class="moment">
+
+            <span>01</span>
+
+            <div class="moment-icon">
+                🌙
+            </div>
+
+            <h3>
+                Noite
+            </h3>
+
+            <p>
+                Porque algumas noites ficam mais bonitas
+                quando existe alguém especial para lembrar.
+            </p>
+
+        </article>
+
+
+        <article class="moment">
+
+            <span>02</span>
+
+            <div class="moment-icon">
+                🌷
+            </div>
+
+            <h3>
+                Flores
+            </h3>
+
+            <p>
+                Porque beleza delicada sempre me faz
+                lembrar de você.
+            </p>
+
+        </article>
+
+
+        <article class="moment">
+
+            <span>03</span>
+
+            <div class="moment-icon">
+                🦫
+            </div>
+
+            <h3>
+                Capivaras
+            </h3>
+
+            <p>
+                Porque depois que você apareceu,
+                elas ganharam um significado completamente
+                diferente.
+            </p>
+
+        </article>
+
+
+        <article class="moment">
+
+            <span>04</span>
+
+            <div class="moment-icon">
+                ❤️
+            </div>
+
+            <h3>
+                Amor
+            </h3>
+
+            <p>
+                Porque essa palavra ficou muito mais bonita
+                depois que passou a ter você dentro dela.
+            </p>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     ESPECIAL
+========================================= -->
+
+<section class="special">
+
+    <div class="special-content">
+
+        <p class="eyebrow">
+            e se você ainda não percebeu...
+        </p>
+
+        <h2>
+            você é o meu<br>
+            lugar favorito.
+        </h2>
+
+        <div class="special-line"></div>
+
+        <p class="special-text">
+            Não importa onde a gente esteja.
+            Se você estiver comigo, já é um lugar bonito.
+        </p>
+
+        <div class="special-capy">
+            🦫
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     FINAL
+========================================= -->
+
+<section class="final section">
+
+    <div class="final-content">
+
+        <p class="eyebrow dark">
+            04 · antes de terminar
+        </p>
+
+        <h2>
+            Obrigado por<br>
+            existir, Julia.
+        </h2>
+
+        <p class="final-text">
+            Talvez este site nunca consiga explicar tudo
+            o que eu sinto por você.
+        </p>
+
+        <p class="final-text">
+            Mas espero que, sempre que você voltar aqui,
+            consiga sentir um pouquinho do amor com que
+            cada detalhe foi feito.
+        </p>
+
+        <div class="final-heart">
+            ♡
+        </div>
+
+        <h3>
+            Eu te amo.
+        </h3>
+
+        <p class="forever">
+            hoje · amanhã · sempre
+        </p>
+
+    </div>
+
+</section>
+
+
+<footer>
+
+    <div class="footer-capy">
+        🦫
+    </div>
+
+    <p>
+        feito para a Julia
+    </p>
+
+    <span>
+        com amor, carinho e uma capivara.
+    </span>
+
+</footer>
+
+
+<div class="particles" id="particles"></div>
+
+
+<script>
+
+/* =========================================
+   ABRIR SITE
+========================================= */
+
+const opening = document.getElementById("opening");
+const enter = document.getElementById("enter");
+
+enter.addEventListener("click", () => {
+
+    opening.classList.add("hidden");
+
+    hearts(25);
+
+});
+
+
+/* =========================================
+   SCROLL
+========================================= */
+
+document.getElementById("scroll").addEventListener("click", () => {
+
+    document.querySelector(".intro").scrollIntoView({
+        behavior:"smooth"
+    });
+
+});
+
+
+/* =========================================
+   PARTÍCULAS
+========================================= */
+
+const particles =
+    document.getElementById("particles");
+
+function createParticle(){
+
+    const p = document.createElement("div");
+
+    p.className = "particle";
+
+    const symbols = [
+        "♡",
+        "✦",
+        "·",
+        "♥"
+    ];
+
+    p.textContent =
+        symbols[Math.floor(Math.random()*symbols.length)];
+
+    p.style.left =
+        Math.random()*100 + "vw";
+
+    p.style.bottom = "-20px";
+
+    p.style.fontSize =
+        (8 + Math.random()*15) + "px";
+
+    p.style.animationDuration =
+        (6 + Math.random()*7) + "s";
+
+    particles.appendChild(p);
+
+    setTimeout(() => {
+        p.remove();
+    },15000);
+}
+
+setInterval(createParticle,900);
+
+
+/* =========================================
+   EXPLOSÃO DE CORAÇÕES
+========================================= */
+
+function hearts(amount){
+
+    for(let i=0;i<amount;i++){
+
+        setTimeout(() => {
+
+            const heart =
+                document.createElement("div");
+
+            heart.className = "particle";
+
+            heart.textContent =
+                Math.random()>.5 ? "♡" : "♥";
+
+            heart.style.left =
+                (35 + Math.random()*30) + "vw";
+
+            heart.style.bottom =
+                (30 + Math.random()*25) + "vh";
+
+            heart.style.fontSize =
+                (14 + Math.random()*24) + "px";
+
+            heart.style.animationDuration =
+                (3 + Math.random()*3) + "s";
+
+            particles.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            },7000);
+
+        },i*80);
+
+    }
+
+}
+
+
+/* =========================================
+   PARALLAX DA CAPIVARA
+========================================= */
+
+const capybara =
+    document.querySelector(".capybara");
+
+document.addEventListener("mousemove",(event)=>{
+
+    if(!capybara) return;
+
+    const x =
+        (event.clientX/window.innerWidth-.5)*10;
+
+    const y =
+        (event.clientY/window.innerHeight-.5)*6;
+
+    capybara.style.marginLeft = x+"px";
+    capybara.style.marginTop = y+"px";
+
+});
+
+
+/* =========================================
+   CLICAR NA CAPIVARA
+========================================= */
+
+const capy =
+    document.querySelector(".big-capy");
+
+let clicks = 0;
+
+capy.addEventListener("click",()=>{
+
+    clicks++;
+
+    hearts(10);
+
+    if(clicks === 3){
+
+        alert(
+            "🦫 A capivara aprovou esse amor. ❤️"
+        );
+
+        clicks=0;
+    }
+
+});
+
+
+/* =========================================
+   EFEITO AO ENTRAR NAS SEÇÕES
+========================================= */
+
+const observer =
+    new IntersectionObserver(
+        entries => {
+
+            entries.forEach(entry => {
+
+                if(entry.isIntersecting){
+
+                    entry.target.style.opacity="1";
+                    entry.target.style.transform=
+                        "translateY(0)";
+
+                }
+
+            });
+
+        },
+        {
+            threshold:.15
+        }
+    );
+
+
+document
+.querySelectorAll(
+    ".card,.moment,.letter,.final-content"
+)
+.forEach(el=>{
+
+    el.style.opacity="0";
+
+    el.style.transform=
+        "translateY(35px)";
+
+    el.style.transition=
+        "opacity 1s ease, transform 1s ease";
+
+    observer.observe(el);
+
+});
+
+</script>
+
+</body>
+</html>
