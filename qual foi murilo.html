@@ -1,0 +1,2707 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>MURILO // OPERAÇÃO ATITUDE</title>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Orbitron:wght@400;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#030305;
+    color:#fff;
+    font-family:Poppins,sans-serif;
+    overflow-x:hidden;
+    transition:.5s;
+}
+
+/* ================================
+   FUNDO
+================================ */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-5;
+
+    background:
+        radial-gradient(circle at 15% 15%,#ff005522,transparent 28%),
+        radial-gradient(circle at 85% 25%,#7300ff1d,transparent 30%),
+        radial-gradient(circle at 50% 100%,#ff6a001c,transparent 35%),
+        #030305;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-4;
+
+    opacity:.035;
+
+    background-image:
+        linear-gradient(#fff 1px,transparent 1px),
+        linear-gradient(90deg,#fff 1px,transparent 1px);
+
+    background-size:40px 40px;
+
+    pointer-events:none;
+}
+
+/* ================================
+   SCROLLBAR
+================================ */
+
+::-webkit-scrollbar{
+    width:8px;
+}
+
+::-webkit-scrollbar-track{
+    background:#030305;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#ff174f;
+    border-radius:10px;
+}
+
+/* ================================
+   NAV
+================================ */
+
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+
+    width:100%;
+
+    padding:16px 6%;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    z-index:1000;
+
+    background:#030305c9;
+    backdrop-filter:blur(18px);
+
+    border-bottom:1px solid #ffffff0d;
+}
+
+.logo{
+    font-family:Orbitron;
+    font-weight:900;
+    letter-spacing:3px;
+    font-size:20px;
+}
+
+.logo span{
+    color:#ff174f;
+}
+
+.nav-links{
+    display:flex;
+    gap:25px;
+}
+
+.nav-links a{
+    color:#888;
+    text-decoration:none;
+    font-size:12px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.nav-links a:hover{
+    color:#ff174f;
+}
+
+/* ================================
+   HERO
+================================ */
+
+.hero{
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    padding:120px 20px 70px;
+
+    position:relative;
+}
+
+.hero-content{
+    max-width:1050px;
+}
+
+.system{
+    display:inline-block;
+
+    font-family:Orbitron;
+
+    font-size:10px;
+    letter-spacing:3px;
+
+    color:#ff5076;
+
+    padding:9px 18px;
+
+    border:1px solid #ff174f55;
+
+    border-radius:50px;
+
+    background:#ff174f0a;
+
+    margin-bottom:25px;
+
+    animation:pulse 2s infinite;
+}
+
+.hero h1{
+    font-family:Anton;
+
+    font-size:clamp(75px,16vw,190px);
+
+    line-height:.76;
+
+    letter-spacing:4px;
+}
+
+.hero h1 .outline{
+    color:transparent;
+
+    -webkit-text-stroke:2px #fff;
+}
+
+.hero h1 .red{
+    color:#ff174f;
+}
+
+.hero-description{
+    max-width:720px;
+
+    margin:35px auto;
+
+    color:#858585;
+
+    line-height:1.8;
+
+    font-size:15px;
+}
+
+.hero-buttons{
+    display:flex;
+
+    justify-content:center;
+
+    gap:12px;
+
+    flex-wrap:wrap;
+}
+
+/* ================================
+   BOTÕES
+================================ */
+
+.btn{
+    border:none;
+
+    padding:14px 23px;
+
+    border-radius:8px;
+
+    font-family:Poppins;
+
+    font-weight:800;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.btn-red{
+    color:#fff;
+
+    background:#ff174f;
+
+    box-shadow:0 0 30px #ff174f44;
+}
+
+.btn-red:hover{
+    transform:translateY(-4px) scale(1.02);
+
+    box-shadow:
+        0 0 20px #ff174f66,
+        0 0 50px #ff174f22;
+}
+
+.btn-dark{
+    color:#fff;
+
+    background:#ffffff08;
+
+    border:1px solid #ffffff12;
+}
+
+.btn-dark:hover{
+    background:#ffffff14;
+}
+
+/* ================================
+   SEÇÕES
+================================ */
+
+section{
+    padding:110px 6%;
+}
+
+.section-header{
+    margin-bottom:50px;
+}
+
+.section-title{
+    font-family:Anton;
+
+    font-size:clamp(45px,7vw,80px);
+
+    line-height:.9;
+
+    text-transform:uppercase;
+}
+
+.section-title span{
+    color:#ff174f;
+}
+
+.section-subtitle{
+    max-width:650px;
+
+    color:#777;
+
+    margin-top:15px;
+
+    line-height:1.7;
+
+    font-size:14px;
+}
+
+/* ================================
+   TERMINAL
+================================ */
+
+.terminal{
+    max-width:1000px;
+
+    margin:0 auto 100px;
+
+    border-radius:14px;
+
+    overflow:hidden;
+
+    border:1px solid #ffffff12;
+
+    background:#080809;
+
+    box-shadow:0 25px 80px #00000066;
+}
+
+.terminal-top{
+    padding:12px 16px;
+
+    background:#111113;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:7px;
+}
+
+.dot{
+    width:10px;
+    height:10px;
+
+    border-radius:50%;
+}
+
+.red-dot{
+    background:#ff4757;
+}
+
+.yellow-dot{
+    background:#ffcc00;
+}
+
+.green-dot{
+    background:#20d86b;
+}
+
+.terminal-title{
+    margin-left:10px;
+
+    color:#666;
+
+    font-family:monospace;
+
+    font-size:11px;
+}
+
+.terminal-body{
+    padding:25px;
+
+    font-family:monospace;
+
+    color:#aaa;
+
+    line-height:1.9;
+
+    font-size:13px;
+}
+
+.green{
+    color:#21e879;
+}
+
+.pink{
+    color:#ff174f;
+}
+
+.yellow{
+    color:#ffc400;
+}
+
+/* ================================
+   FICHA
+================================ */
+
+.profile-grid{
+    display:grid;
+
+    grid-template-columns:330px 1fr;
+
+    gap:25px;
+}
+
+.profile-card,
+.stats-card{
+    border:1px solid #ffffff0d;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff09,
+            #ffffff02
+        );
+
+    border-radius:20px;
+
+    padding:30px;
+}
+
+.profile-card{
+    text-align:center;
+}
+
+.avatar{
+    width:150px;
+    height:150px;
+
+    margin:0 auto 20px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    font-family:Anton;
+
+    font-size:65px;
+
+    color:#ff174f;
+
+    background:
+        radial-gradient(circle,#ff174f22,#090909 65%);
+
+    border:2px solid #ff174f66;
+
+    box-shadow:
+        0 0 35px #ff174f22,
+        inset 0 0 30px #ff174f11;
+}
+
+.profile-card h3{
+    font-family:Anton;
+
+    font-size:36px;
+
+    letter-spacing:2px;
+}
+
+.role{
+    color:#ff174f;
+
+    font-family:Orbitron;
+
+    font-size:9px;
+
+    letter-spacing:2px;
+
+    margin-top:5px;
+}
+
+.profile-description{
+    color:#666;
+
+    font-size:12px;
+
+    line-height:1.7;
+
+    margin-top:20px;
+}
+
+.stat-row{
+    margin-bottom:22px;
+}
+
+.stat-top{
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-bottom:8px;
+
+    font-size:12px;
+}
+
+.stat-top span:last-child{
+    color:#ff174f;
+
+    font-family:Orbitron;
+}
+
+.stat-bg{
+    height:9px;
+
+    background:#111;
+
+    border-radius:20px;
+
+    overflow:hidden;
+}
+
+.stat-bar{
+    height:100%;
+
+    border-radius:20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ff174f,
+            #ff6a00
+        );
+
+    box-shadow:0 0 15px #ff174f55;
+
+    transition:1s;
+}
+
+/* ================================
+   ATITUDE
+================================ */
+
+.attitude-panel{
+    max-width:1000px;
+
+    margin:auto;
+
+    padding:50px;
+
+    text-align:center;
+
+    border-radius:25px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff09,
+            #ffffff02
+        );
+
+    border:1px solid #ffffff12;
+}
+
+.attitude-number{
+    font-family:Anton;
+
+    font-size:110px;
+
+    line-height:1;
+
+    color:#ff174f;
+
+    text-shadow:0 0 30px #ff174f44;
+}
+
+.attitude-label{
+    color:#666;
+
+    font-family:Orbitron;
+
+    font-size:10px;
+
+    letter-spacing:3px;
+
+    margin-bottom:35px;
+}
+
+.big-bar{
+    height:25px;
+
+    background:#101012;
+
+    border-radius:30px;
+
+    overflow:hidden;
+
+    border:1px solid #ffffff0b;
+}
+
+.big-bar-fill{
+    width:8%;
+
+    height:100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ff174f,
+            #ff7100
+        );
+
+    border-radius:30px;
+
+    transition:1s cubic-bezier(.17,.67,.35,1.2);
+
+    box-shadow:0 0 30px #ff174f88;
+}
+
+.xp-area{
+    margin:25px 0;
+
+    color:#666;
+
+    font-size:12px;
+}
+
+.xp-area strong{
+    color:#fff;
+}
+
+.level-badge{
+    display:inline-block;
+
+    padding:8px 18px;
+
+    border-radius:50px;
+
+    background:#ff174f14;
+
+    border:1px solid #ff174f44;
+
+    color:#ff5076;
+
+    font-family:Orbitron;
+
+    font-size:10px;
+}
+
+/* ================================
+   MISSÕES
+================================ */
+
+.missions{
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:14px;
+}
+
+.mission{
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:23px;
+
+    border-radius:14px;
+
+    background:#ffffff06;
+
+    border:1px solid #ffffff0c;
+
+    transition:.3s;
+}
+
+.mission:hover{
+    transform:translateX(5px);
+
+    border-color:#ff174f55;
+}
+
+.mission h3{
+    font-size:14px;
+}
+
+.mission p{
+    color:#666;
+
+    font-size:11px;
+
+    margin-top:4px;
+}
+
+.mission-button{
+    width:42px;
+    height:42px;
+
+    border-radius:50%;
+
+    border:none;
+
+    color:white;
+
+    background:#ff174f;
+
+    cursor:pointer;
+
+    font-weight:900;
+
+    transition:.3s;
+}
+
+.mission-button:hover{
+    transform:scale(1.1);
+}
+
+.mission.completed{
+    opacity:.45;
+
+    text-decoration:line-through;
+}
+
+.mission.completed .mission-button{
+    background:#20d86b;
+}
+
+/* ================================
+   CONQUISTAS
+================================ */
+
+.achievements{
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:15px;
+}
+
+.achievement{
+    padding:25px 15px;
+
+    text-align:center;
+
+    border-radius:15px;
+
+    background:#ffffff05;
+
+    border:1px solid #ffffff0b;
+
+    opacity:.3;
+
+    filter:grayscale(1);
+
+    transition:.5s;
+}
+
+.achievement.unlocked{
+    opacity:1;
+
+    filter:none;
+
+    border-color:#ff174f55;
+
+    box-shadow:0 0 30px #ff174f11;
+}
+
+.achievement-icon{
+    font-size:40px;
+
+    margin-bottom:12px;
+}
+
+.achievement h3{
+    font-size:13px;
+}
+
+.achievement p{
+    color:#666;
+
+    font-size:10px;
+
+    margin-top:5px;
+}
+
+/* ================================
+   FRASE
+================================ */
+
+.quote-section{
+    text-align:center;
+}
+
+.quote{
+    max-width:900px;
+
+    margin:35px auto;
+
+    font-family:Anton;
+
+    font-size:clamp(35px,6vw,70px);
+
+    line-height:1;
+
+    text-transform:uppercase;
+
+    transition:.3s;
+}
+
+.quote::before{
+    content:"“";
+
+    color:#ff174f;
+}
+
+/* ================================
+   RANKING
+================================ */
+
+.ranking{
+    max-width:850px;
+
+    margin:auto;
+}
+
+.rank{
+    display:flex;
+
+    align-items:center;
+
+    padding:17px 22px;
+
+    margin:7px 0;
+
+    border-radius:10px;
+
+    background:#ffffff05;
+
+    border:1px solid #ffffff08;
+}
+
+.rank.current{
+    background:#ff174f0d;
+
+    border-color:#ff174f55;
+}
+
+.position{
+    font-family:Anton;
+
+    font-size:25px;
+
+    color:#ff174f;
+
+    width:40px;
+}
+
+.rank-name{
+    flex:1;
+
+    font-size:13px;
+}
+
+.score{
+    color:#777;
+
+    font-family:Orbitron;
+
+    font-size:10px;
+}
+
+/* ================================
+   EVENTO
+================================ */
+
+.event-box{
+    max-width:800px;
+
+    margin:auto;
+
+    padding:45px;
+
+    text-align:center;
+
+    border-radius:20px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #ff174f12,
+            transparent 60%
+        );
+
+    border:1px solid #ff174f22;
+}
+
+.event-icon{
+    font-size:55px;
+
+    margin-bottom:15px;
+}
+
+.event-title{
+    font-family:Anton;
+
+    font-size:40px;
+}
+
+.event-description{
+    color:#777;
+
+    font-size:13px;
+
+    margin:15px auto 25px;
+
+    max-width:550px;
+}
+
+/* ================================
+   FINAL
+================================ */
+
+.final{
+    min-height:85vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+}
+
+.final h2{
+    font-family:Anton;
+
+    font-size:clamp(70px,12vw,150px);
+
+    line-height:.78;
+}
+
+.final h2 span{
+    color:#ff174f;
+}
+
+.final p{
+    color:#777;
+
+    max-width:600px;
+
+    margin:30px auto;
+
+    line-height:1.7;
+}
+
+/* ================================
+   FOOTER
+================================ */
+
+footer{
+    padding:30px;
+
+    text-align:center;
+
+    color:#3f3f3f;
+
+    font-family:monospace;
+
+    font-size:10px;
+
+    border-top:1px solid #ffffff08;
+}
+
+/* ================================
+   PARTICULAS
+================================ */
+
+.particle{
+    position:fixed;
+
+    width:6px;
+    height:6px;
+
+    border-radius:50%;
+
+    pointer-events:none;
+
+    z-index:9999;
+}
+
+/* ================================
+   REVEAL
+================================ */
+
+.reveal{
+    opacity:0;
+
+    transform:translateY(35px);
+
+    transition:1s;
+}
+
+.reveal.active{
+    opacity:1;
+
+    transform:translateY(0);
+}
+
+/* ================================
+   ANIMAÇÕES
+================================ */
+
+@keyframes pulse{
+
+    0%,100%{
+        box-shadow:0 0 0 #ff174f00;
+    }
+
+    50%{
+        box-shadow:0 0 30px #ff174f33;
+    }
+}
+
+@keyframes shake{
+
+    0%{transform:translateX(0)}
+    25%{transform:translateX(-8px)}
+    50%{transform:translateX(8px)}
+    75%{transform:translateX(-8px)}
+    100%{transform:translateX(0)}
+
+}
+
+.shake{
+    animation:shake .4s;
+}
+
+/* ================================
+   MOBILE
+================================ */
+
+@media(max-width:800px){
+
+    .nav-links{
+        display:none;
+    }
+
+    .profile-grid{
+        grid-template-columns:1fr;
+    }
+
+    .missions{
+        grid-template-columns:1fr;
+    }
+
+    .achievements{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .attitude-panel{
+        padding:30px 20px;
+    }
+
+    .attitude-number{
+        font-size:80px;
+    }
+
+    .hero h1{
+        font-size:80px;
+    }
+
+    section{
+        padding:80px 5%;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- ================================
+     NAV
+================================ -->
+
+<nav>
+
+    <div class="logo">
+        MURILO<span>//</span>ATITUDE
+    </div>
+
+    <div class="nav-links">
+
+        <a href="#perfil">PERFIL</a>
+
+        <a href="#atitude">ATITUDE</a>
+
+        <a href="#missoes">MISSÕES</a>
+
+        <a href="#conquistas">CONQUISTAS</a>
+
+    </div>
+
+</nav>
+
+
+<!-- ================================
+     HERO
+================================ -->
+
+<header class="hero">
+
+<div class="hero-content">
+
+    <div class="system">
+        ⚠ SISTEMA DE INTERVENÇÃO ATIVADO
+    </div>
+
+    <h1>
+
+        ACORDA
+
+        <span class="outline">
+            MURILO
+        </span>
+
+        <span class="red">
+            .
+        </span>
+
+    </h1>
+
+    <p class="hero-description">
+
+        Depois de uma análise extremamente científica,
+        imparcial e definitivamente não feita pelos seus amigos,
+        foi detectado um problema:
+
+        <strong>
+            MURILO ESTÁ COM FALTA DE ATITUDE.
+        </strong>
+
+    </p>
+
+    <div class="hero-buttons">
+
+        <a
+            href="#perfil"
+            class="btn btn-red"
+        >
+            🚨 INICIAR DIAGNÓSTICO
+        </a>
+
+        <button
+            class="btn btn-dark"
+            onclick="modoCaos()"
+        >
+            💀 MODO CAOS
+        </button>
+
+    </div>
+
+</div>
+
+</header>
+
+
+<!-- ================================
+     TERMINAL
+================================ -->
+
+<section>
+
+<div class="terminal reveal">
+
+    <div class="terminal-top">
+
+        <div class="dot red-dot"></div>
+        <div class="dot yellow-dot"></div>
+        <div class="dot green-dot"></div>
+
+        <div class="terminal-title">
+            murilo_attitude.exe
+        </div>
+
+    </div>
+
+    <div class="terminal-body">
+
+        <div>
+            <span class="green">
+                SYSTEM
+            </span>
+            >
+            iniciando análise...
+        </div>
+
+        <div>
+            <span class="green">
+                SYSTEM
+            </span>
+            >
+            identificando indivíduo...
+        </div>
+
+        <div>
+            <span class="yellow">
+                TARGET
+            </span>
+            >
+            MURILO
+        </div>
+
+        <div>
+            <span class="pink">
+                WARNING
+            </span>
+            >
+            nível de atitude abaixo do recomendado.
+        </div>
+
+        <div>
+            <span class="pink">
+                WARNING
+            </span>
+            >
+            excesso de "depois eu vejo".
+        </div>
+
+        <div>
+            <span class="green">
+                SYSTEM
+            </span>
+            >
+            protocolo de intervenção iniciado.
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- ================================
+     PERFIL
+================================ -->
+
+<section id="perfil">
+
+<div class="section-header reveal">
+
+    <div class="section-title">
+        Ficha do <span>Murilo</span>
+    </div>
+
+    <p class="section-subtitle">
+
+        Perfil oficial do indivíduo em treinamento.
+        Todos os dados abaixo foram calculados por um algoritmo
+        altamente duvidoso.
+
+    </p>
+
+</div>
+
+
+<div class="profile-grid">
+
+
+<div class="profile-card reveal">
+
+    <div class="avatar">
+        M
+    </div>
+
+    <h3>
+        MURILO
+    </h3>
+
+    <div class="role">
+        CANDIDATO A TER ATITUDE
+    </div>
+
+    <p class="profile-description">
+
+        Um jovem com potencial.
+        Atualmente bloqueado por excesso de pensamento,
+        falta de iniciativa e um preocupante estoque de desculpas.
+
+    </p>
+
+</div>
+
+
+<div class="stats-card reveal">
+
+    <div class="stat-row">
+
+        <div class="stat-top">
+            <span>ATITUDE</span>
+            <span id="statAtitude">8%</span>
+        </div>
+
+        <div class="stat-bg">
+            <div
+                class="stat-bar"
+                id="barAtitude"
+                style="width:8%"
+            ></div>
+        </div>
+
+    </div>
+
+
+    <div class="stat-row">
+
+        <div class="stat-top">
+            <span>CORAGEM</span>
+            <span id="statCoragem">22%</span>
+        </div>
+
+        <div class="stat-bg">
+            <div
+                class="stat-bar"
+                id="barCoragem"
+                style="width:22%"
+            ></div>
+        </div>
+
+    </div>
+
+
+    <div class="stat-row">
+
+        <div class="stat-top">
+            <span>INICIATIVA</span>
+            <span id="statIniciativa">14%</span>
+        </div>
+
+        <div class="stat-bg">
+            <div
+                class="stat-bar"
+                id="barIniciativa"
+                style="width:14%"
+            ></div>
+        </div>
+
+    </div>
+
+
+    <div class="stat-row">
+
+        <div class="stat-top">
+            <span>CARISMA</span>
+            <span id="statCarisma">38%</span>
+        </div>
+
+        <div class="stat-bg">
+            <div
+                class="stat-bar"
+                id="barCarisma"
+                style="width:38%"
+            ></div>
+        </div>
+
+    </div>
+
+
+    <div class="stat-row">
+
+        <div class="stat-top">
+            <span>CONFIANÇA</span>
+            <span id="statConfianca">19%</span>
+        </div>
+
+        <div class="stat-bg">
+            <div
+                class="stat-bar"
+                id="barConfianca"
+                style="width:19%"
+            ></div>
+        </div>
+
+    </div>
+
+
+    <div class="stat-row">
+
+        <div class="stat-top">
+            <span>CAPACIDADE DE AGIR</span>
+            <span id="statAgir">11%</span>
+        </div>
+
+        <div class="stat-bg">
+            <div
+                class="stat-bar"
+                id="barAgir"
+                style="width:11%"
+            ></div>
+        </div>
+
+    </div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================================
+     MEDIDOR
+================================ -->
+
+<section id="atitude">
+
+<div class="section-header reveal">
+
+    <div class="section-title">
+        Medidor de <span>Atitude</span>
+    </div>
+
+    <p class="section-subtitle">
+
+        O número mais importante da vida do Murilo
+        neste exato momento.
+
+    </p>
+
+</div>
+
+
+<div class="attitude-panel reveal">
+
+    <div
+        class="attitude-number"
+        id="attitudeNumber"
+    >
+        8%
+    </div>
+
+    <div class="attitude-label">
+        NÍVEL ATUAL DE ATITUDE
+    </div>
+
+
+    <div class="big-bar">
+
+        <div
+            class="big-bar-fill"
+            id="attitudeBar"
+        ></div>
+
+    </div>
+
+
+    <div class="xp-area">
+
+        XP:
+
+        <strong id="xp">
+            80
+        </strong>
+
+        /
+
+        <strong>
+            1000
+        </strong>
+
+    </div>
+
+
+    <div class="level-badge">
+
+        NÍVEL
+        <span id="level">
+            1
+        </span>
+
+    </div>
+
+    <br><br>
+
+
+    <button
+        class="btn btn-red"
+        onclick="aumentarAtitude()"
+    >
+        ⚡ DAR ATITUDE
+    </button>
+
+</div>
+
+</section>
+
+
+<!-- ================================
+     MISSÕES
+================================ -->
+
+<section id="missoes">
+
+<div class="section-header reveal">
+
+    <div class="section-title">
+        Missões do <span>Murilo</span>
+    </div>
+
+    <p class="section-subtitle">
+
+        Complete tarefas para ganhar XP.
+        Sim, transformamos a vida do Murilo em um RPG.
+
+    </p>
+
+</div>
+
+
+<div class="missions">
+
+
+<div class="mission reveal">
+
+    <div>
+
+        <h3>
+            🎯 Tomar uma iniciativa
+        </h3>
+
+        <p>
+            +100 XP
+        </p>
+
+    </div>
+
+    <button
+        class="mission-button"
+        onclick="completarMissao(this,100)"
+    >
+        ✓
+    </button>
+
+</div>
+
+
+<div class="mission reveal">
+
+    <div>
+
+        <h3>
+            💬 Falar o que pensa
+        </h3>
+
+        <p>
+            +120 XP
+        </p>
+
+    </div>
+
+    <button
+        class="mission-button"
+        onclick="completarMissao(this,120)"
+    >
+        ✓
+    </button>
+
+</div>
+
+
+<div class="mission reveal">
+
+    <div>
+
+        <h3>
+            🚀 Parar de enrolar
+        </h3>
+
+        <p>
+            +150 XP
+        </p>
+
+    </div>
+
+    <button
+        class="mission-button"
+        onclick="completarMissao(this,150)"
+    >
+        ✓
+    </button>
+
+</div>
+
+
+<div class="mission reveal">
+
+    <div>
+
+        <h3>
+            🗿 Fazer algo sem medo
+        </h3>
+
+        <p>
+            +180 XP
+        </p>
+
+    </div>
+
+    <button
+        class="mission-button"
+        onclick="completarMissao(this,180)"
+    >
+        ✓
+    </button>
+
+</div>
+
+
+<div class="mission reveal">
+
+    <div>
+
+        <h3>
+            📱 Mandar aquela mensagem
+        </h3>
+
+        <p>
+            +200 XP
+        </p>
+
+    </div>
+
+    <button
+        class="mission-button"
+        onclick="completarMissao(this,200)"
+    >
+        ✓
+    </button>
+
+</div>
+
+
+<div class="mission reveal">
+
+    <div>
+
+        <h3>
+            🧠 Parar de pensar demais
+        </h3>
+
+        <p>
+            +150 XP
+        </p>
+
+    </div>
+
+    <button
+        class="mission-button"
+        onclick="completarMissao(this,150)"
+    >
+        ✓
+    </button>
+
+</div>
+
+
+<div class="mission reveal">
+
+    <div>
+
+        <h3>
+            🔥 Fazer acontecer
+        </h3>
+
+        <p>
+            +250 XP
+        </p>
+
+    </div>
+
+    <button
+        class="mission-button"
+        onclick="completarMissao(this,250)"
+    >
+        ✓
+    </button>
+
+</div>
+
+
+<div class="mission reveal">
+
+    <div>
+
+        <h3>
+            👑 Chegar aos 100%
+        </h3>
+
+        <p>
+            +500 XP
+        </p>
+
+    </div>
+
+    <button
+        class="mission-button"
+        onclick="completarMissao(this,500)"
+    >
+        ✓
+    </button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================================
+     CONQUISTAS
+================================ -->
+
+<section id="conquistas">
+
+<div class="section-header reveal">
+
+    <div class="section-title">
+        <span>Conquistas</span>
+    </div>
+
+    <p class="section-subtitle">
+
+        Troféus desbloqueáveis da carreira do Murilo.
+
+    </p>
+
+</div>
+
+
+<div class="achievements">
+
+
+<div class="achievement unlocked reveal">
+
+    <div class="achievement-icon">
+        🧠
+    </div>
+
+    <h3>
+        Pensador Profissional
+    </h3>
+
+    <p>
+        Pensou por 3 horas.
+    </p>
+
+</div>
+
+
+<div
+    class="achievement reveal"
+    id="achievement1"
+>
+
+    <div class="achievement-icon">
+        ⚡
+    </div>
+
+    <h3>
+        Primeira Atitude
+    </h3>
+
+    <p>
+        Tomou iniciativa.
+    </p>
+
+</div>
+
+
+<div
+    class="achievement reveal"
+    id="achievement2"
+>
+
+    <div class="achievement-icon">
+        🔥
+    </div>
+
+    <h3>
+        Tá Acordando
+    </h3>
+
+    <p>
+        Chegou aos 50%.
+    </p>
+
+</div>
+
+
+<div
+    class="achievement reveal"
+    id="achievement3"
+>
+
+    <div class="achievement-icon">
+        👑
+    </div>
+
+    <h3>
+        Rei da Atitude
+    </h3>
+
+    <p>
+        Chegou aos 100%.
+    </p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================================
+     FRASES
+================================ -->
+
+<section class="quote-section">
+
+<div class="reveal">
+
+<div class="section-title">
+    Central de <span>Conselhos</span>
+</div>
+
+
+<div
+    class="quote"
+    id="quote"
+>
+    Murilo, ninguém vai fazer por você.
+</div>
+
+
+<button
+    class="btn btn-dark"
+    onclick="novaFrase()"
+>
+    🔄 NOVO CONSELHO
+</button>
+
+</div>
+
+</section>
+
+
+<!-- ================================
+     EVENTO
+================================ -->
+
+<section>
+
+<div class="event-box reveal">
+
+    <div class="event-icon">
+        🎲
+    </div>
+
+    <div class="event-title">
+        EVENTO ALEATÓRIO
+    </div>
+
+    <p
+        class="event-description"
+        id="eventDescription"
+    >
+        Clique para descobrir o que o destino
+        decidiu fazer com o Murilo hoje.
+    </p>
+
+    <button
+        class="btn btn-red"
+        onclick="eventoAleatorio()"
+    >
+        🎲 GIRAR EVENTO
+    </button>
+
+</div>
+
+</section>
+
+
+<!-- ================================
+     RANKING
+================================ -->
+
+<section>
+
+<div class="section-header reveal">
+
+    <div class="section-title">
+        Ranking de <span>Atitude</span>
+    </div>
+
+    <p class="section-subtitle">
+        Competição completamente fictícia.
+        Mas o Murilo precisa subir.
+    </p>
+
+</div>
+
+
+<div class="ranking reveal">
+
+
+<div class="rank">
+
+    <div class="position">
+        01
+    </div>
+
+    <div class="rank-name">
+        João
+    </div>
+
+    <div class="score">
+        982 XP
+    </div>
+
+</div>
+
+
+<div class="rank">
+
+    <div class="position">
+        02
+    </div>
+
+    <div class="rank-name">
+        Pedro
+    </div>
+
+    <div class="score">
+        874 XP
+    </div>
+
+</div>
+
+
+<div class="rank current">
+
+    <div class="position">
+        03
+    </div>
+
+    <div class="rank-name">
+        🔥 MURILO
+    </div>
+
+    <div
+        class="score"
+        id="rankingXP"
+    >
+        80 XP
+    </div>
+
+</div>
+
+
+<div class="rank">
+
+    <div class="position">
+        04
+    </div>
+
+    <div class="rank-name">
+        Carlos
+    </div>
+
+    <div class="score">
+        611 XP
+    </div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================================
+     FINAL
+================================ -->
+
+<section class="final">
+
+<div class="reveal">
+
+    <h2>
+        MURILO
+        <br>
+        <span>ACORDA.</span>
+    </h2>
+
+    <p>
+
+        O diagnóstico foi realizado.
+        As missões foram entregues.
+        O sistema já explicou tudo.
+
+        <br><br>
+
+        Agora só falta uma coisa:
+
+        <strong>
+            FAZER.
+
+        </strong>
+
+    </p>
+
+
+    <button
+        class="btn btn-red"
+        onclick="modoSupremo()"
+    >
+        👑 ATIVAR MURILO SUPREMO
+    </button>
+
+</div>
+
+</section>
+
+
+<footer>
+
+    MURILO // OPERAÇÃO ATITUDE
+
+    <br><br>
+
+    <span>
+        SISTEMA DESENVOLVIDO PARA FINS DE ZOEIRA,
+        MOTIVAÇÃO E COBRANÇA DE AMIGO.
+    </span>
+
+</footer>
+
+
+<script>
+
+/* ==================================
+   ESTADO DO JOGO
+================================== */
+
+let atitude = 8;
+
+let xp = 80;
+
+let nivel = 1;
+
+let stats = {
+
+    coragem:22,
+
+    iniciativa:14,
+
+    carisma:38,
+
+    confianca:19,
+
+    agir:11
+
+};
+
+
+/* ==================================
+   ATUALIZAR
+================================== */
+
+function atualizar(){
+
+    if(atitude > 100)
+        atitude = 100;
+
+    if(xp > 1000)
+        xp = 1000;
+
+
+    nivel =
+        Math.floor(xp / 200) + 1;
+
+
+    document.getElementById(
+        "attitudeNumber"
+    ).innerText =
+        atitude + "%";
+
+
+    document.getElementById(
+        "attitudeBar"
+    ).style.width =
+        atitude + "%";
+
+
+    document.getElementById(
+        "xp"
+    ).innerText =
+        xp;
+
+
+    document.getElementById(
+        "level"
+    ).innerText =
+        nivel;
+
+
+    document.getElementById(
+        "rankingXP"
+    ).innerText =
+        xp + " XP";
+
+
+    document.getElementById(
+        "statAtitude"
+    ).innerText =
+        atitude + "%";
+
+
+    document.getElementById(
+        "barAtitude"
+    ).style.width =
+        atitude + "%";
+
+
+    document.getElementById(
+        "statCoragem"
+    ).innerText =
+        stats.coragem + "%";
+
+
+    document.getElementById(
+        "barCoragem"
+    ).style.width =
+        stats.coragem + "%";
+
+
+    document.getElementById(
+        "statIniciativa"
+    ).innerText =
+        stats.iniciativa + "%";
+
+
+    document.getElementById(
+        "barIniciativa"
+    ).style.width =
+        stats.iniciativa + "%";
+
+
+    document.getElementById(
+        "statCarisma"
+    ).innerText =
+        stats.carisma + "%";
+
+
+    document.getElementById(
+        "barCarisma"
+    ).style.width =
+        stats.carisma + "%";
+
+
+    document.getElementById(
+        "statConfianca"
+    ).innerText =
+        stats.confianca + "%";
+
+
+    document.getElementById(
+        "barConfianca"
+    ).style.width =
+        stats.confianca + "%";
+
+
+    document.getElementById(
+        "statAgir"
+    ).innerText =
+        stats.agir + "%";
+
+
+    document.getElementById(
+        "barAgir"
+    ).style.width =
+        stats.agir + "%";
+
+
+    /* CONQUISTAS */
+
+    if(atitude >= 20){
+
+        document
+        .getElementById("achievement1")
+        .classList.add("unlocked");
+
+    }
+
+
+    if(atitude >= 50){
+
+        document
+        .getElementById("achievement2")
+        .classList.add("unlocked");
+
+    }
+
+
+    if(atitude >= 100){
+
+        document
+        .getElementById("achievement3")
+        .classList.add("unlocked");
+
+    }
+
+
+    salvar();
+
+}
+
+
+/* ==================================
+   DAR ATITUDE
+================================== */
+
+function aumentarAtitude(){
+
+    let ganho =
+        Math.floor(Math.random()*9)+4;
+
+
+    atitude += ganho;
+
+    xp += ganho * 10;
+
+
+    stats.coragem += 2;
+
+    stats.iniciativa += 2;
+
+    stats.confianca += 1;
+
+    stats.agir += 2;
+
+
+    particulas();
+
+    atualizar();
+
+}
+
+
+/* ==================================
+   MISSÕES
+================================== */
+
+function completarMissao(botao,valor){
+
+    const mission =
+        botao.closest(".mission");
+
+
+    if(mission.classList.contains("completed"))
+        return;
+
+
+    mission.classList.add("completed");
+
+
+    botao.innerText="✓";
+
+
+    xp += valor;
+
+
+    atitude +=
+        Math.floor(valor / 30);
+
+
+    stats.iniciativa += 4;
+
+    stats.coragem += 3;
+
+    stats.agir += 4;
+
+
+    particulas();
+
+    atualizar();
+
+}
+
+
+/* ==================================
+   FRASES
+================================== */
+
+const frases = [
+
+"Murilo, ninguém vai fazer por você.",
+
+"Menos pensar. Mais fazer.",
+
+"Se você quer, demonstre.",
+
+"O momento perfeito não existe.",
+
+"Murilo, toma uma atitude pelo amor de Deus.",
+
+"Você já pensou. Agora faça.",
+
+"Coragem é agir mesmo com medo.",
+
+"Pare de esperar e comece.",
+
+"Se der errado, você aprende.",
+
+"Murilo, levanta dessa cadeira.",
+
+"Não deixa a oportunidade passar.",
+
+"Você tem potencial. Agora usa.",
+
+"Uma atitude hoje pode mudar muita coisa amanhã.",
+
+"Seu maior inimigo neste momento é o botão 'depois'.",
+
+"Não transforme uma oportunidade em uma dúvida.",
+
+"Se ninguém sabe que você quer, como vão saber?",
+
+"Murilo.exe precisa ser atualizado."
+
+];
+
+
+function novaFrase(){
+
+    const quote =
+        document.getElementById("quote");
+
+
+    const frase =
+        frases[
+            Math.floor(
+                Math.random()*frases.length
+            )
+        ];
+
+
+    quote.style.opacity="0";
+
+
+    setTimeout(()=>{
+
+        quote.innerText=frase;
+
+        quote.style.opacity="1";
+
+    },200);
+
+}
+
+
+/* ==================================
+   EVENTOS
+================================== */
+
+const eventos = [
+
+    {
+        icon:"🔥",
+        text:"MURILO ENCONTROU +50 DE CORAGEM NO CHÃO."
+    },
+
+    {
+        icon:"💀",
+        text:"MURILO PENSOU EM DESISTIR. O SISTEMA NEGOU."
+    },
+
+    {
+        icon:"⚡",
+        text:"RAJADA DE ATITUDE! +100 XP."
+    },
+
+    {
+        icon:"🗿",
+        text:"MURILO ENTROU NO MODO ESTÁTUA. NADA ACONTECEU."
+    },
+
+    {
+        icon:"🚀",
+        text:"MURILO TOMOU UMA DECISÃO SEM PENSAR 40 VEZES."
+    },
+
+    {
+        icon:"📱",
+        text:"UMA MENSAGEM FOI ENVIADA. O DESTINO FOI ALTERADO."
+    },
+
+    {
+        icon:"👑",
+        text:"O SISTEMA DETECTOU POTENCIAL DE PROTAGONISTA."
+    }
+
+];
+
+
+function eventoAleatorio(){
+
+    const evento =
+        eventos[
+            Math.floor(
+                Math.random()*eventos.length
+            )
+        ];
+
+
+    document.getElementById(
+        "eventDescription"
+    ).innerText =
+        evento.icon + " " + evento.text;
+
+
+    xp += 50;
+
+    atitude += 5;
+
+    particulas();
+
+    atualizar();
+
+}
+
+
+/* ==================================
+   MODO SUPREMO
+================================== */
+
+function modoSupremo(){
+
+    atitude = 100;
+
+    xp = 1000;
+
+    nivel = 6;
+
+
+    stats.coragem = 100;
+
+    stats.iniciativa = 100;
+
+    stats.carisma = 100;
+
+    stats.confianca = 100;
+
+    stats.agir = 100;
+
+
+    atualizar();
+
+    particulas();
+
+
+    document.body.classList.add("shake");
+
+
+    setTimeout(()=>{
+
+        document.body.classList.remove("shake");
+
+
+        alert(
+
+            "👑 MURILO SUPREMO 👑\n\n"+
+
+            "ATITUDE: 100%\n"+
+
+            "CORAGEM: 100%\n"+
+            "INICIATIVA: 100%\n"+
+            "CONFIANÇA: 100%\n"+
+            "CARISMA: 100%\n\n"+
+
+            "NÃO EXISTEM MAIS DESCULPAS."
+
+        );
+
+    },500);
+
+}
+
+
+/* ==================================
+   PARTÍCULAS
+================================== */
+
+function particulas(){
+
+    for(let i=0;i<45;i++){
+
+        const p =
+            document.createElement("div");
+
+
+        p.className="particle";
+
+
+        p.style.left="50%";
+
+        p.style.top="50%";
+
+
+        p.style.background =
+            Math.random()>.5
+            ? "#ff174f"
+            : "#ff8700";
+
+
+        document.body.appendChild(p);
+
+
+        const x =
+            (Math.random()-.5)*800;
+
+
+        const y =
+            (Math.random()-.5)*800;
+
+
+        p.animate(
+
+            [
+
+                {
+                    transform:
+                        "translate(-50%,-50%) scale(1)",
+
+                    opacity:1
+                },
+
+                {
+                    transform:
+                        `translate(${x}px,${y}px) scale(0)`,
+
+                    opacity:0
+                }
+
+            ],
+
+            {
+
+                duration:
+                    700 +
+                    Math.random()*700,
+
+                easing:
+                    "cubic-bezier(.17,.67,.35,1.2)"
+
+            }
+
+        );
+
+
+        setTimeout(
+            ()=>p.remove(),
+            1500
+        );
+
+    }
+
+}
+
+
+/* ==================================
+   SALVAR
+================================== */
+
+function salvar(){
+
+    localStorage.setItem(
+        "muriloAtitude",
+        JSON.stringify({
+
+            atitude,
+
+            xp,
+
+            nivel,
+
+            stats
+
+        })
+    );
+
+}
+
+
+/* ==================================
+   CARREGAR
+================================== */
+
+function carregar(){
+
+    const salvo =
+        localStorage.getItem(
+            "muriloAtitude"
+        );
+
+
+    if(!salvo)
+        return;
+
+
+    try{
+
+        const dados =
+            JSON.parse(salvo);
+
+
+        atitude =
+            dados.atitude ?? atitude;
+
+
+        xp =
+            dados.xp ?? xp;
+
+
+        nivel =
+            dados.nivel ?? nivel;
+
+
+        stats =
+            dados.stats ?? stats;
+
+
+        atualizar();
+
+    }
+
+    catch(e){
+
+        console.log(
+            "Novo perfil iniciado."
+        );
+
+    }
+
+}
+
+
+/* ==================================
+   SCROLL REVEAL
+================================== */
+
+const observer =
+new IntersectionObserver(
+
+    entries=>{
+
+        entries.forEach(entry=>{
+
+            if(entry.isIntersecting){
+
+                entry.target
+                    .classList
+                    .add("active");
+
+            }
+
+        });
+
+    },
+
+    {
+        threshold:.12
+    }
+
+);
+
+
+document
+.querySelectorAll(".reveal")
+.forEach(
+    el=>observer.observe(el)
+);
+
+
+/* ==================================
+   INICIALIZAR
+================================== */
+
+carregar();
+
+atualizar();
+
+</script>
+
+</body>
+</html>
